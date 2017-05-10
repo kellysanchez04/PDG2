@@ -1,0 +1,61 @@
+
+<section id="wrapper" class="login-register">
+  <div class="login-box login-sidebar">
+    <div class="white-box">
+      <div class="form-horizontal form-material" id="loginform" >
+        <a href="javascript:void(0)" class="text-center db"><img src="../plugins/images/admin-text-dark.png" alt="Home" /></a>
+       <h4 style="
+    text-align: center;">Crea una cuenta y disfruta aprendiendo con Rowlot!</h4>
+        <form name="signupForm" ng-submit="signup(signupForm)">
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input id="textName" ng-model="credentials.name" class="form-control" type="text"  placeholder="Nombre">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input id="textLastName" ng-model="credentials.lastName" class="form-control" type="text"  placeholder="Apellido">
+          </div>
+        </div>
+        <div class="form-group ">
+          <div class="col-xs-12">
+            <input id="textEmail"  ng-model="credentials.email" class="form-control" type="text" required="" placeholder="Email">
+          </div>
+        </div>
+        <div class="form-group ">
+          <div class="col-xs-12">
+            <input id="textPassword" ng-model="credentials.password" class="form-control" type="password" required="" placeholder="Contraseña">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="checkbox-primary p-t-0">              
+              <label for="checkbox-signup">Tipo de usuario</label>
+              <br>
+              <input type="radio" id="radio1" ng-model="credentials.type" name="vehicle" value="Estudiante">Estudiante
+              <input type="radio" id="radio2" ng-model="credentials.type" name="vehicle" value="Profesor">Profesor
+            </div>
+          </div>
+        </div>
+    
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12">
+            <input type="submit" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" value="Regístrate" />  
+          </div>          
+        </div>
+    
+        <div class="form-group m-b-0">
+          <div class="col-sm-12 text-center"  >
+            <p> ¿Tienes una Cuenta?
+              <a ui-sref="login" href="javascript:void(0)" class="text-primary m-l-5">
+                <b>Inicia Sesión</b>
+                  
+              </a>
+            </p>
+          </div>
+        </div>
+                </form>
+      </div>
+    </div>
+  </div>
+</section>

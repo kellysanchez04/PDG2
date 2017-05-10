@@ -1,0 +1,231 @@
+
+ <div ng-show="showTeacher">
+<div id="wrapper">
+
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-12">
+                    <h4 class="page-title"> Ranking</h4> </div>
+
+                <!-- /.col-lg-12 -->
+            </div>
+
+           <!-- /.row -->
+            <!-- .row -->
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="white-box">
+                        <div class="user-bg">
+                            <!--<img width="100%" alt="user" src="../plugins/images/large/img1.jpg">-->
+                            <div class="overlay-box">
+                                <div class="user-content">
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                    <h4 class="text-white" style= "color:#fff">
+                                        <b>
+                                    {{profile.Nombre}} {{profile.Apellido}}</b></h4>
+                                    <h5 class="text-white">  {{profile.email}}</h5> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    <div class="white-box">
+                        
+                        <ul class="nav nav-tabs tabs customtab">
+                            
+                            <li class="active tab">
+                                <a href="#notas" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-home"></i></span> <span class="hidden-xs">Notas</span> </a>
+                            </li>
+
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="notas">
+
+                    
+
+                                    <div class="table-responsive">
+                                        <table class="table  primary-table">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Actividad</th>
+                                                <th>Portcentaje</th>
+                                                <th>Nota</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Resumen lectura</td>
+                                                <td>20%</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                               <td>código</td>
+                                                <td>20%</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Proyecto 1</td>
+                                                <td>20%</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                         
+
+                            
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+
+</div></div></div>
+
+</div>
+
+
+
+
+
+
+
+ <div ng-show="showStudent">
+<div id="wrapper">
+
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-12">
+                    <h4 class="page-title"> Perfil </h4> </div>
+
+                <!-- /.col-lg-12 -->
+            </div>
+
+           <!-- /.row -->
+            <!-- .row -->
+            <div class="row">
+                <div class="col-12">
+                   
+                    <div class="profile-box">
+                         <div class="profile">
+                        <div class="user-bg">
+                            <!--<img width="100%" alt="user" src="../plugins/images/large/img1.jpg">-->
+                            <div class="overlay-box">
+                                <div class="user-content">
+                                    <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                                    <h4 class="text-white">
+                                        <b>
+                                    {{profile.Nombre}} {{profile.Apellido}}</b></h4>
+                                    <h5 class="text-white">  {{profile.email}}</h5> </div>
+                            </div>
+                        </div>
+                         </br>
+                        
+                        <div class="user-btm-box">
+                            <div class="col-md-4 col-sm-4 text-center">
+
+                                 <h4 class="text-white">Monedas</h4>
+                                <h1 class="text-white">{{profile.Moneda}} </h1> </div>
+                            <div class="col-md-4 col-sm-4 text-center">
+
+                                <h4 class="text-white">Medallas</h4> 
+                                <h1 class="text-white">{{profile.Medalla}} </h1> </div>
+                            <div class="col-md-4 col-sm-4 text-center">
+
+                                  <h4 class="text-white">Vidas</h4> 
+                                <h1 class="text-white">{{profile.Vida}} </h1> </div>
+                        </div>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="white-box">
+                        
+                        <ul class="nav nav-tabs tabs customtab">
+                            
+                            <li class="active tab">
+                                <a href="#notas" data-toggle="tab"> <span class="visible-xs"><i class="fa fa-home"></i></span> <span class="hidden-xs">Notas</span> </a>
+                            </li>
+        
+
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="notas">
+
+         
+
+                                    <div class="table-responsive">
+                                        <table class="table  primary-table">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Actividad</th>
+                                                <th>Portcentaje</th>
+                                                <th>Nota</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Resumen lectura</td>
+                                                <td>20%</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                               <td>código</td>
+                                                <td>20%</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Proyecto 1</td>
+                                                <td>20%</td>
+                                                <td>3.5</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                              
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+
+
+</div></div></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

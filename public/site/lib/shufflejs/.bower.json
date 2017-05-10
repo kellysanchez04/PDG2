@@ -1,0 +1,54 @@
+{
+  "name": "shufflejs",
+  "homepage": "https://github.com/Vestride/Shuffle",
+  "authors": [
+    "Glen Cheney <cheney.glen@gmail.com>"
+  ],
+  "description": "Categorize, sort, and filter a responsive grid of items",
+  "main": "dist/shuffle.js",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "gallery",
+    "shuffle",
+    "layout",
+    "masonry",
+    "filter",
+    "sort",
+    "responsive",
+    "grid",
+    "mobile",
+    "tiles"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "**/_*",
+    "css",
+    "img",
+    "js",
+    "node_modules",
+    "bower_components",
+    "gulp",
+    "gulpfile.js",
+    "favicon.png",
+    "index.html",
+    "robots.txt",
+    "test",
+    "tests",
+    "webpack.config.js",
+    "webpack.config.min.js"
+  ],
+  "version": "4.0.2",
+  "_release": "4.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.0.2",
+    "commit": "7ad0a5480446b01d3f69fa6f8d8359610b184bd5"
+  },
+  "_source": "https://github.com/Vestride/Shuffle.git",
+  "_target": "~4.0.2",
+  "_originalSource": "shufflejs"
+}

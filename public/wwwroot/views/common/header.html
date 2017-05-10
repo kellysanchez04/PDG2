@@ -1,0 +1,56 @@
+
+ <!-- horizontal menu  -->
+ <header ng-controller="LoginController">
+    <nav class="navbar navbar-default navbar-static-top m-b-0" style="z-index: 123312; position: fixed;">
+        <div class="navbar-header">
+            <div class="top-left-part">
+                <!-- Logo -->
+                <a class="logo" ui-sref="auth.rowlot" href="javascript:;">
+
+                    <!-- Logo--><span class="hidden-xs">
+                        <img src="../plugins/images/logo-menu.png" alt="home" class="dark-logo">
+                     </span> </a>
+            </div>
+            <!-- /Logo -->
+            <!-- Search input and Toggle icon -->
+            <ul class="nav navbar-top-links navbar-left">
+                <li><a href="javascript:void(0)" class="open-close waves-effect waves-light"><i class="ti-menu"></i></a></li>
+     
+                <!-- .Task dropdown -->
+    
+
+            </ul>
+
+
+            <ul class="nav navbar-top-links navbar-right pull-right" ng-controller="RowlotController">
+ 
+                <li class="dropdown">
+                    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <b class="hidden-xs">HCI</b><span class="caret"></span> </a>
+                    <ul class="dropdown-menu dropdown-user animated flipInY">
+                        <li>
+                            <div class="dw-user-box">
+                                <div class="u-img"><img src="../plugins/images/users/varun.jpg" alt="user" /></div>
+                                <div class="u-text"><h4>{{profile.Nombre}} {{profile.Apellido}}</h4><p class="text-muted">{{profile.email}}</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">Ver más</a></div>
+                            </div>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#"><i class="ti-user"></i> Informacion del curso</a></li>
+
+
+                        <li role="separator" class="divider"></li>
+
+                        <li><a id="logout-user" href="javascript:;" ng-click="logout()"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+
+                <!-- /.dropdown -->
+            </ul>
+        </div>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <!-- /.navbar-static-side -->
+    </nav>
+    </header>
+
+

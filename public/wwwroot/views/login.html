@@ -1,0 +1,36 @@
+<!-- Preloader -->
+<section id="wrapper" class="login-register">
+  <div class="login-box login-sidebar">
+    <div class="white-box">
+      <div class="form-horizontal form-material" id="loginform" >
+        <a href="javascript:void(0)" class="text-center db"><img src="../plugins/images/admin-text-dark.png" alt="Home" /></a>  
+        <form name="loginForm" ng-submit="login(loginForm)">
+          <div class="form-group m-t-40">
+            <div class="col-xs-12">
+              <input id="textEmail" ng-model="credentials.username" class="form-control" type="text" required="" placeholder="Correo">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-xs-12">
+              <input id="textPassword" ng-model="credentials.password" class="form-control" type="password" required="" placeholder="Contrasena">
+            </div>
+          </div>
+  
+          <div class="form-group text-center m-t-20">
+            <div class="col-xs-12">
+              <!--button id="btnLogin" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" >Log In</button-->
+               <input type="submit" class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" value="Iniciar Sesión" />
+            </div>
+          </div>
+        </form>
+    
+        <div class="form-group m-b-0">
+          <div class="col-sm-12 text-center">
+            <p>No tienes cuenta aun? <a ui-sref="signup" href="javascript:void(0)" class="text-primary m-l-5"><b>Registrate</b></a></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

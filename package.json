@@ -1,0 +1,28 @@
+{
+  "name": "rowlot",
+  "version": "1.0.0",
+  "description": "platform academy",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phndavid13/rowlot.git"
+  },
+  "keywords": [
+    "teacher",
+    "student"
+  ],
+  "author": "Nelson David P.H.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phndavid13/rowlot/issues"
+  },
+  "homepage": "https://github.com/phndavid13/rowlot#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}

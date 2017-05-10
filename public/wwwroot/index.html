@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="AdsbApp">
+<head>
+    <meta charset="utf-8" />
+    <title update-title></title>
+
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="flav.ico">
+
+    <link href="content/vendor/bootstrap.min.css" rel="stylesheet" />     
+    <!-- Menu CSS -->
+    <link href="content/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">          
+    <link href="content/vendor/angular-toastr.css" rel="stylesheet" />    
+    <link href="content/vendor/loading-bar.css" rel="stylesheet" />   
+    <link href="content/css/footable.core.css" rel="stylesheet" />    
+    <link href="content/css/animate.css" rel="stylesheet" />    
+    <link href="content/css/style.css" rel="stylesheet" />  
+  <link href="content/css/style2.css" rel="stylesheet" />
+    <link href="content/css/color.css" rel="stylesheet" />  
+  
+  
+    <link href="content/css/color2.css" rel="stylesheet" />  
+
+
+</head>
+<body class="{{siteBg}}"
+      ng-class="{'login_page': $state.is('login')}">
+
+
+    <div ui-view autoscroll="false" class="mainView-animate"></div> 
+    <div id="loading-bar-spinner-container"></div>
+
+   
+    <script src="js/vendor/lodash.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    
+    <script src="js/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/vendor/sidebar-nav/dist/sidebar-nav.min.js"></script>          
+    <script src="js/vendor/jquery.slimscroll.js"></script>
+    <script src="js/vendor/waves.js"></script>
+   <script src="js/vendor/custom.min.js"></script>
+    <!--Style Switcher -->
+    <script src="js/vendor/styleswitcher/jQuery.style.switcher.js"></script>
+    <script src="js/vendor/footable/js/footable.all.min.js"></script>
+    <script src="js/vendor/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="js/vendor/footable-init.js"></script> 
+
+    <script src="js/vendor/moment.js"></script>
+    <script src="js/vendor/angular.js"></script>
+    <script src="js/vendor/angular-animate.js"></script>
+    <script src="js/vendor/angular-cookies.js"></script>
+    <script src="js/vendor/angular-toastr.tpls.js"></script>
+    <script src="js/vendor/angular-touch.js"></script>
+    <script src="js/vendor/angular-ui-router.js"></script>
+    <script src="js/vendor/angular-aria.js"></script>
+    <script src="js/vendor/angular-messages.js"></script>
+    <script src="js/vendor/angular-material.js"></script>   
+    <script src="js/vendor/ui-bootstrap-tpls.js"></script>    
+    <script src="js/vendor/ocLazyLoad/dist/ocLazyLoad.js"></script>
+    <script src="js/vendor/jquery.mousewheel.js"></script>
+    <script src="js/vendor/jquery.mCustomScrollbar.js"></script>
+    <script src="js/vendor/angular-breadcrumb.js"></script>
+    <script src="js/vendor/angular-simple-logger.js"></script>
+    <script src="js/vendor/angular-google-maps.js"></script>
+    <script src="js/vendor/shuffle.js"></script>
+    <script src="js/vendor/jquery.shuffle.modernizr.js"></script>
+    <script src="js/vendor/v-accordion.js"></script>
+    <script src="js/vendor/loading-bar.js"></script>   
+
+    <!--script type="text/javascript" src="js/vendor/firebase.js"></script-->
+   <!-- Firebase -->
+     
+    
+    
+    
+  <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAPsDLUl-siK8xadixI8emwb0N08JEhzpY",
+        authDomain: "rowlot-c9891.firebaseapp.com",
+        databaseURL: "https://rowlot-c9891.firebaseio.com",
+        storageBucket: "rowlot-c9891.appspot.com",
+        messagingSenderId: "844762296892"
+    };
+    firebase.initializeApp(config);
+  </script>
+    <script type="text/javascript" src="js/vendor/angularfire.min.js"></script>
+    
+    <script src="js/app.js"></script>
+    <script src="js/configuration.js"></script> 
+</body>
+</html>
