@@ -125,13 +125,15 @@
                 templateUrl: "views/rowlot/listtask.html",
                 controller: "RowlotController"
             })
-
-             .state("auth.rowlot-profile", {
-                page_title: "Rowlot - profile",
+        
+        .state("auth.rowlot-profile", {
+                page_title: "Rowlot - Profile",
                 url: "/profile",
                 templateUrl: "views/rowlot/profile.html",
                 controller: "RowlotController"
             })
+
+            
 
     };
 } ());
@@ -180,6 +182,253 @@
             }
         })            
     };
+})();
+/**
+ * Controller de la página de autenticación (Login)
+ * 
+ * @author demorales13@gmail.com
+ * @since 3-dic-2016
+ *
+ */
+
+(function () {
+    "use strict";
+
+    angular.module("AdsbApp")
+           .controller("LoginController", LoginController);
+
+    LoginController.$inject = ["$scope", "$rootScope",  "LoginService", "CurrentUserService", "LoginRedirectService", "toastr"];
+
+    function LoginController($scope, $rootScope,  LoginService, CurrentUserService, LoginRedirectService, toastr) {
+
+        $scope.credentials = {
+            username: "",
+            password: ""
+        }
+
+        // Instancia del usuario actual
+        $scope.user = CurrentUserService.profile;
+        
+        // Inicio de sesión
+        $scope.login = function (form) {
+            if (form.$valid) {
+                LoginService.login($scope.credentials)
+                             .then(function (response) {
+
+                                 LoginRedirectService.redirectPostLogin();
+                                 
+                             }, function (error) {
+
+                                 toastr.error("No se pudo ejecutar la operación");
+                                 console.log(error);
+
+                             });
+
+                $scope.credentials.password = "";
+                form.$setUntouched();
+            }
+        }
+        //Registro
+        $scope.signup = function(form){
+          if (form.$valid){
+            console.log($scope.credentials);
+            LoginService.signup($scope.credentials).then(function(response){
+                 LoginRedirectService.redirectPostLogin();
+            }, function(error){
+                toastr.error("No se pudo ejecutar la operación");
+                console.log(error);
+            });
+            $scope.credentials.password = "";
+            form.$setUntouched();
+          }
+        }
+        // Cierre de sesión - Se eliminan datos del usuario y se redirecciona a la página de login
+        $scope.logout = function () {            
+            firebase.auth().signOut().then(function() {
+                LoginService.logout();
+                LoginRedirectService.redirectPostLogout();
+            }, function(error) {
+              // An error happened.
+            });
+        }
+      
+        var init = function(){  
+            // Row Toggler
+            // -----------------------------------------------------------------
+            $('#demo-foo-row-toggler').footable();
+
+            // Accordion
+            // -----------------------------------------------------------------
+            $('#demo-foo-accordion').footable().on('footable_row_expanded', function(e) {
+              $('#demo-foo-accordion tbody tr.footable-detail-show').not(e.row).each(function() {
+                $('#demo-foo-accordion').data('footable').toggleDetail(this);
+              });
+            });
+
+            // Pagination
+            // -----------------------------------------------------------------
+            $('#demo-foo-pagination').footable();
+            $('#demo-show-entries').change(function (e) {
+              e.preventDefault();
+              var pageSize = $(this).val();
+              $('#demo-foo-pagination').data('page-size', pageSize);
+              $('#demo-foo-pagination').trigger('footable_initialized');
+            });
+
+            // Filtering
+            // -----------------------------------------------------------------
+            var filtering = $('#demo-foo-filtering');
+            filtering.footable().on('footable_filtering', function (e) {
+              var selected = $('#demo-foo-filter-status').find(':selected').val();
+              e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+              e.clear = !e.filter;
+            });
+
+            // Filter status
+            $('#demo-foo-filter-status').change(function (e) {
+              e.preventDefault();
+              filtering.trigger('footable_filter', {filter: $(this).val()});
+            });
+
+            // Search input
+            $('#demo-foo-search').on('input', function (e) {
+              e.preventDefault();
+              filtering.trigger('footable_filter', {filter: $(this).val()});
+            });
+
+
+            // Search input
+            $('#demo-input-search2').on('input', function (e) {
+              e.preventDefault();
+              addrow.trigger('footable_filter', {filter: $(this).val()});
+            });
+            
+            // Add & Remove Row
+            var addrow = $('#demo-foo-addrow');
+            addrow.footable().on('click', '.delete-row-btn', function() {
+
+              //get the footable object
+              var footable = addrow.data('footable');
+
+              //get the row we are wanting to delete
+              var row = $(this).parents('tr:first');
+
+              //delete the row
+              footable.removeRow(row);
+            });
+            // Add Row Button
+            $('#demo-btn-addrow').click(function() {
+
+              //get the footable object
+              var footable = addrow.data('footable');
+              
+              //build up the row we are wanting to add
+              var newRow = '<tr><td>thome</td><td>Woldt</td><td>Airline Transport Pilot</td><td>3 Oct 2016</td><td><span class="label label-table label-success">Active</span></td><td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
+
+              //add it
+              footable.appendRow(newRow);
+            });
+
+
+        }();
+    }
+
+}());
+/**
+ * Servicio para el manejo de la lógica de negocio del módulo de autenticación
+ * 
+ * @author Nelson David Padilla
+ * @since 3-dic-2016
+ *
+ */
+
+(function () {
+    'use strict';
+
+    angular.module("AdsbApp")
+           .service("LoginService", LoginService);
+
+    LoginService.$inject = ['RestService', 'CurrentUserService', '$q', "$firebaseAuth"];
+
+    function LoginService(RestService, CurrentUserService, $q, $firebaseAuth) {
+
+        // Servicio de inicio de sesión        
+        var login = function (credentials) {
+
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            const auth = firebase.auth();
+
+            //Sign In
+            auth.signInWithEmailAndPassword(credentials.username, credentials.password).catch(function (error) {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;                
+                // ...
+            });
+            
+            // Add a realtime listener
+            firebase.auth().onAuthStateChanged(function(user) {
+                if(user) {                    
+                    CurrentUserService.setProfile(credentials.username, user.uid);
+                    defered.resolve();
+                }else{
+                    console.error("Authentication failed:", error);
+                    defered.reject("Usuario no existe...")    
+                }
+            });
+            return promise;
+        }
+        var signup = function(credentials){
+            var defered = $q.defer();
+            var promise = defered.promise;
+            
+            const auth = firebase.auth();
+
+             auth.createUserWithEmailAndPassword(credentials.email,credentials.password).then(function(user){
+                    if(user){
+                      console.log('uid',user.uid);                  
+                      writeUserData(user.uid,credentials.email, credentials.password,'imagencita', credentials.name, credentials.lastName, credentials.type);                      
+                      defered.resolve();
+                    }else{
+                        console.error("Authentication failed:", error);
+                        defered.reject("Usuario no existe...") 
+                    }
+              });
+             return promise;
+        }
+        //Funcion donde agrego los datos del usuario creado
+        //a la base de datos, con el UID <3
+        var writeUserData = function (userId, email, pass, imageUrl, nombre, apellido, type) {
+            console.log('basededatos');
+            firebase.database().ref('Usuarios/' + userId).set({
+                Nombre: nombre,
+                Apellido: apellido,
+                email: email,
+                Contrasena: pass,
+                profile_picture : imageUrl,
+                experiencia: 0,
+                Moneda: 300,
+                Medalla: 0,
+                Tipo: type,
+                Vida: 5
+
+            });
+        }
+        // Servicio de fin de sesión
+        var logout = function () {
+            // Elimina el perfil almacenado
+            CurrentUserService.removeProfile();
+        }
+
+        return {
+            login: login,
+            logout: logout,
+            signup: signup
+        };
+    };
+
 })();
 /**
  * Controller for draw in GoogleMapApi
@@ -659,253 +908,106 @@
         }
     }
 })();
-/**
- * Controller de la página de autenticación (Login)
- * 
- * @author demorales13@gmail.com
- * @since 3-dic-2016
- *
- */
-
 (function () {
     "use strict";
 
     angular.module("AdsbApp")
-           .controller("LoginController", LoginController);
-
-    LoginController.$inject = ["$scope", "$rootScope",  "LoginService", "CurrentUserService", "LoginRedirectService", "toastr"];
-
-    function LoginController($scope, $rootScope,  LoginService, CurrentUserService, LoginRedirectService, toastr) {
-
-        $scope.credentials = {
-            username: "",
-            password: ""
-        }
-
-        // Instancia del usuario actual
-        $scope.user = CurrentUserService.profile;
-        
-        // Inicio de sesión
-        $scope.login = function (form) {
-            if (form.$valid) {
-                LoginService.login($scope.credentials)
-                             .then(function (response) {
-
-                                 LoginRedirectService.redirectPostLogin();
-                                 
-                             }, function (error) {
-
-                                 toastr.error("No se pudo ejecutar la operación");
-                                 console.log(error);
-
-                             });
-
-                $scope.credentials.password = "";
-                form.$setUntouched();
-            }
-        }
-        //Registro
-        $scope.signup = function(form){
-          if (form.$valid){
-            console.log($scope.credentials);
-            LoginService.signup($scope.credentials).then(function(response){
-                 LoginRedirectService.redirectPostLogin();
-            }, function(error){
-                toastr.error("No se pudo ejecutar la operación");
-                console.log(error);
-            });
-            $scope.credentials.password = "";
-            form.$setUntouched();
-          }
-        }
-        // Cierre de sesión - Se eliminan datos del usuario y se redirecciona a la página de login
-        $scope.logout = function () {            
-            firebase.auth().signOut().then(function() {
-                LoginService.logout();
-                LoginRedirectService.redirectPostLogout();
-            }, function(error) {
-              // An error happened.
-            });
-        }
-      
-        var init = function(){  
-            // Row Toggler
-            // -----------------------------------------------------------------
-            $('#demo-foo-row-toggler').footable();
-
-            // Accordion
-            // -----------------------------------------------------------------
-            $('#demo-foo-accordion').footable().on('footable_row_expanded', function(e) {
-              $('#demo-foo-accordion tbody tr.footable-detail-show').not(e.row).each(function() {
-                $('#demo-foo-accordion').data('footable').toggleDetail(this);
-              });
-            });
-
-            // Pagination
-            // -----------------------------------------------------------------
-            $('#demo-foo-pagination').footable();
-            $('#demo-show-entries').change(function (e) {
-              e.preventDefault();
-              var pageSize = $(this).val();
-              $('#demo-foo-pagination').data('page-size', pageSize);
-              $('#demo-foo-pagination').trigger('footable_initialized');
-            });
-
-            // Filtering
-            // -----------------------------------------------------------------
-            var filtering = $('#demo-foo-filtering');
-            filtering.footable().on('footable_filtering', function (e) {
-              var selected = $('#demo-foo-filter-status').find(':selected').val();
-              e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
-              e.clear = !e.filter;
-            });
-
-            // Filter status
-            $('#demo-foo-filter-status').change(function (e) {
-              e.preventDefault();
-              filtering.trigger('footable_filter', {filter: $(this).val()});
-            });
-
-            // Search input
-            $('#demo-foo-search').on('input', function (e) {
-              e.preventDefault();
-              filtering.trigger('footable_filter', {filter: $(this).val()});
-            });
+           .controller("SideMenuController", SideMenuController);
 
 
-            // Search input
-            $('#demo-input-search2').on('input', function (e) {
-              e.preventDefault();
-              addrow.trigger('footable_filter', {filter: $(this).val()});
-            });
-            
-            // Add & Remove Row
-            var addrow = $('#demo-foo-addrow');
-            addrow.footable().on('click', '.delete-row-btn', function() {
+    SideMenuController.$inject = ["$rootScope", "$scope", "$state", "$stateParams", "$timeout"];
 
-              //get the footable object
-              var footable = addrow.data('footable');
+    function SideMenuController($rootScope, $scope, $state, $stateParams, $timeout) {
 
-              //get the row we are wanting to delete
-              var row = $(this).parents('tr:first');
-
-              //delete the row
-              footable.removeRow(row);
-            });
-            // Add Row Button
-            $('#demo-btn-addrow').click(function() {
-
-              //get the footable object
-              var footable = addrow.data('footable');
-              
-              //build up the row we are wanting to add
-              var newRow = '<tr><td>thome</td><td>Woldt</td><td>Airline Transport Pilot</td><td>3 Oct 2016</td><td><span class="label label-table label-success">Active</span></td><td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
-
-              //add it
-              footable.appendRow(newRow);
-            });
-
-
-        }();
-    }
-
-}());
-/**
- * Servicio para el manejo de la lógica de negocio del módulo de autenticación
- * 
- * @author Nelson David Padilla
- * @since 3-dic-2016
- *
- */
-
-(function () {
-    'use strict';
-
-    angular.module("AdsbApp")
-           .service("LoginService", LoginService);
-
-    LoginService.$inject = ['RestService', 'CurrentUserService', '$q', "$firebaseAuth"];
-
-    function LoginService(RestService, CurrentUserService, $q, $firebaseAuth) {
-
-        // Servicio de inicio de sesión        
-        var login = function (credentials) {
-
-            var defered = $q.defer();
-            var promise = defered.promise;
-
-            const auth = firebase.auth();
-
-            //Sign In
-            auth.signInWithEmailAndPassword(credentials.username, credentials.password).catch(function (error) {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;                
-                // ...
-            });
-            
-            // Add a realtime listener
-            firebase.auth().onAuthStateChanged(function(user) {
-                if(user) {                    
-                    CurrentUserService.setProfile(credentials.username, user.uid);
-                    defered.resolve();
-                }else{
-                    console.error("Authentication failed:", error);
-                    defered.reject("Usuario no existe...")    
-                }
-            });
-            return promise;
-        }
-        var signup = function(credentials){
-            var defered = $q.defer();
-            var promise = defered.promise;
-            
-            const auth = firebase.auth();
-
-             auth.createUserWithEmailAndPassword(credentials.email,credentials.password).then(function(user){
-                    if(user){
-                      console.log('uid',user.uid);                  
-                      writeUserData(user.uid,credentials.email, credentials.password,'imagencita', credentials.name, credentials.lastName, credentials.type);                      
-                      defered.resolve();
-                    }else{
-                        console.error("Authentication failed:", error);
-                        defered.reject("Usuario no existe...") 
+        $scope.sections = [
+             {
+                id: 0,
+                title: "Dashboard",
+                icon: "mdi mdi-table fa-fw",                
+                link: "auth.rowlot-dasboarh"
+            },
+            {
+                id: 1,
+                title: "Ranking",
+                icon: "mdi mdi-table fa-fw",
+                link: "auth.rowlow-listtask"
+            },
+            {
+                id: 2,
+                title: "Tareas",
+                icon: "mdi mdi-table fa-fw",                
+                submenu: [
+                    {
+                        title: "KRDU",
+                        link: "auth.aircraft-livetraffic-01"
+                    },
+                    {
+                        title: "KLZU",
+                        link: "auth.aircraft-livetraffic-02"
                     }
-              });
-             return promise;
-        }
-        //Funcion donde agrego los datos del usuario creado
-        //a la base de datos, con el UID <3
-        var writeUserData = function (userId, email, pass, imageUrl, nombre, apellido, type) {
-            console.log('basededatos');
-            firebase.database().ref('Usuarios/' + userId).set({
-                Nombre: nombre,
-                Apellido: apellido,
-                email: email,
-                Contrasena: pass,
-                profile_picture : imageUrl,
-                experiencia: 0,
-                Moneda: 300,
-                Medalla: 0,
-                Tipo: type,
-                Vida: 5
+                ]
+            },
+            {
+                id: 3,
+                title: "NMACs",
+                icon: "fa fa-paper-plane-o first_level_icon",
+                link: "auth.aircraft-nmacs"
+            },
+           
+        ];
 
+        // accordion menu
+        $(document).off("click", ".side_menu_expanded #main_menu .has_submenu > a").on("click", ".side_menu_expanded #main_menu .has_submenu > a", function () {
+            if ($(this).parent(".has_submenu").hasClass("first_level")) {
+                var $this_parent = $(this).parent(".has_submenu"),
+                    panel_active = $this_parent.hasClass("section_active");
+
+                if (!panel_active) {
+                    $this_parent.siblings().removeClass("section_active").children("ul").slideUp("200");
+                    $this_parent.addClass("section_active").children("ul").slideDown("200");
+                } else {
+                    $this_parent.removeClass("section_active").children("ul").slideUp("200");
+                }
+            } else {
+                var $submenu_parent = $(this).parent(".has_submenu"),
+                    submenu_active = $submenu_parent.hasClass("submenu_active");
+
+                if (!submenu_active) {
+                    $submenu_parent.siblings().removeClass("submenu_active").children("ul").slideUp("200");
+                    $submenu_parent.addClass("submenu_active").children("ul").slideDown("200");
+                } else {
+                    $submenu_parent.removeClass("submenu_active").children("ul").slideUp("200");
+                }
+            }
+        });
+
+        $rootScope.createScrollbar = function () {
+            $("#main_menu .menu_wrapper").mCustomScrollbar({
+                theme: "minimal-dark",
+                scrollbarPosition: "outside"
             });
-        }
-        // Servicio de fin de sesión
-        var logout = function () {
-            // Elimina el perfil almacenado
-            CurrentUserService.removeProfile();
-        }
-
-        return {
-            login: login,
-            logout: logout,
-            signup: signup
         };
-    };
 
+        $rootScope.destroyScrollbar = function () {
+            $("#main_menu .menu_wrapper").mCustomScrollbar("destroy");
+        };
+
+        $timeout(function () {
+            if (!$rootScope.sideNavCollapsed && !$rootScope.topMenuAct) {
+                if (!$("#main_menu .has_submenu").hasClass("section_active")) {
+                    $("#main_menu .has_submenu .act_nav").closest(".has_submenu").children("a").click();
+                } else {
+                    $("#main_menu .has_submenu.section_active").children("ul").show();
+                }
+                // init scrollbar
+                $rootScope.createScrollbar();
+            }
+        });
+
+
+    }
 })();
+
 (function () {
     "use strict";
 
@@ -1058,106 +1160,6 @@
 
 
 })();
-(function () {
-    "use strict";
-
-    angular.module("AdsbApp")
-           .controller("SideMenuController", SideMenuController);
-
-
-    SideMenuController.$inject = ["$rootScope", "$scope", "$state", "$stateParams", "$timeout"];
-
-    function SideMenuController($rootScope, $scope, $state, $stateParams, $timeout) {
-
-        $scope.sections = [
-             {
-                id: 0,
-                title: "Dashboard",
-                icon: "mdi mdi-table fa-fw",                
-                link: "auth.rowlot-dasboarh"
-            },
-            {
-                id: 1,
-                title: "Ranking",
-                icon: "mdi mdi-table fa-fw",
-                link: "auth.rowlow-listtask"
-            },
-            {
-                id: 2,
-                title: "Tareas",
-                icon: "mdi mdi-table fa-fw",                
-                submenu: [
-                    {
-                        title: "KRDU",
-                        link: "auth.aircraft-livetraffic-01"
-                    },
-                    {
-                        title: "KLZU",
-                        link: "auth.aircraft-livetraffic-02"
-                    }
-                ]
-            },
-            {
-                id: 3,
-                title: "NMACs",
-                icon: "fa fa-paper-plane-o first_level_icon",
-                link: "auth.aircraft-nmacs"
-            },
-           
-        ];
-
-        // accordion menu
-        $(document).off("click", ".side_menu_expanded #main_menu .has_submenu > a").on("click", ".side_menu_expanded #main_menu .has_submenu > a", function () {
-            if ($(this).parent(".has_submenu").hasClass("first_level")) {
-                var $this_parent = $(this).parent(".has_submenu"),
-                    panel_active = $this_parent.hasClass("section_active");
-
-                if (!panel_active) {
-                    $this_parent.siblings().removeClass("section_active").children("ul").slideUp("200");
-                    $this_parent.addClass("section_active").children("ul").slideDown("200");
-                } else {
-                    $this_parent.removeClass("section_active").children("ul").slideUp("200");
-                }
-            } else {
-                var $submenu_parent = $(this).parent(".has_submenu"),
-                    submenu_active = $submenu_parent.hasClass("submenu_active");
-
-                if (!submenu_active) {
-                    $submenu_parent.siblings().removeClass("submenu_active").children("ul").slideUp("200");
-                    $submenu_parent.addClass("submenu_active").children("ul").slideDown("200");
-                } else {
-                    $submenu_parent.removeClass("submenu_active").children("ul").slideUp("200");
-                }
-            }
-        });
-
-        $rootScope.createScrollbar = function () {
-            $("#main_menu .menu_wrapper").mCustomScrollbar({
-                theme: "minimal-dark",
-                scrollbarPosition: "outside"
-            });
-        };
-
-        $rootScope.destroyScrollbar = function () {
-            $("#main_menu .menu_wrapper").mCustomScrollbar("destroy");
-        };
-
-        $timeout(function () {
-            if (!$rootScope.sideNavCollapsed && !$rootScope.topMenuAct) {
-                if (!$("#main_menu .has_submenu").hasClass("section_active")) {
-                    $("#main_menu .has_submenu .act_nav").closest(".has_submenu").children("a").click();
-                } else {
-                    $("#main_menu .has_submenu.section_active").children("ul").show();
-                }
-                // init scrollbar
-                $rootScope.createScrollbar();
-            }
-        });
-
-
-    }
-})();
-
 /**
  * Servicio para el manejo de las ventanas de dialogo
  * 

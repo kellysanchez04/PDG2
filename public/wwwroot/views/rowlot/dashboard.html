@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row bg-title">
                 <div class="col-12">
-                    <h4 class="page-title"> Ranking</h4> </div>
+                    <h4 class="page-title"> perfil</h4> </div>
             </div>
 
                   
@@ -167,11 +167,12 @@
                                        
                                         <td>{{user.data.Vida}}</td>                       
                                         <td>
-                                            <div>
-                                                <button class="btn btn-info" ng-click="substratLife(user.uid, user.data.Vida)">-</button>
-                                                <input id="{{user.uid}}" min="0" type="number" ng-model='Life' style="width: 50px;" />
-                                                <button class="btn btn-warning" ng-click="addLife(user.uid, user.data.Vida)">+</button>
-                                            </div>
+                                            <p>
+                                                <b>Vida</b>
+                                                <button class="btn btn-info" ng-click="substratVida(user.uid, user.data.Vida)">-</button>
+                                                <input id="life-{{user.uid}}" min="0" type="number" ng-model='vida' style="width: 50px;" />
+                                                <button class="btn btn-warning" ng-click="addVida(user.uid, user.data.Vida)">+</button>
+                                            </p>
                                         </td>
                     
                                     </tr>

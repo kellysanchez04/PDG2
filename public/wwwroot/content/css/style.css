@@ -335,6 +335,28 @@ hr {
   height: 88px;
   width: 88px;
 }
+
+ /*Foto perfil*/
+    
+    .editarImagen{
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+       transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        
+    }
+    
+    .imagenPerfil:hover .contenidoImagen{
+        opacity: 0.3;
+    }
+    
+    .imagenPerfil:hover .editarImagen{
+        opacity: 1;
+    }
+
 .txt-oflo {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -16543,4 +16565,6 @@ ul.pro-amenities li span i {
     width: 300px;
     margin-top: 10%;
   }
+    
+   
 }
