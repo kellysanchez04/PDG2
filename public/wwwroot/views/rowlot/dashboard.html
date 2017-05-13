@@ -10,38 +10,69 @@
             </div>
 
                   
-          
-            <div class="row">
-                    <div class="active tab">
+             <div class="row">
+                
+        
+                
+                <div class="active tab">
                         
-                <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="col-lg-4 col-sm-6 col-xs-12">
                     <div class="white-box analytics-info">
-                           <a href="#monedasT" data-toggle="tab">
-                        <h3 class="box-title">Monedas</h3>
+                           <a href="#monedas" data-toggle="tab">
+                        <h3 class="box-title">Maximas monedas</h3>
+                                    <ul class="list-inline two-part">
+                            <li>
+                                <div id="sparklinedash2"></div>
+                            </li>
+                            <li class="text-right"><i class="fa fa-bandcamp" aria-hidden="true"></i> <span class="counter text-purple">1000</span></li>
+                                        
+                                        <li>   <div>
+                                                <button class="btn btn-info" ng-click="substratMedalla(user.uid, user.data.Medalla)">-</button>
+                                                <input id="metal-{{user.uid}}" min="0" type="number" ng-model='metal' style="width: 50px;" />
+                                                <button class="btn btn-warning" ng-click="addMedalla(user.uid, user.data.Medalla)">+</button>
+                                            </div></li>
+                        </ul>
                                </a>
        </div>
                 </div>
                     </div>
                 
-                    <div class="tab">
-                          
-                <div class="col-lg-4 col-sm-4 col-xs-12">
-  <div class="white-box analytics-info">
-                          <a href="#vidasT" data-toggle="tab">
-                        <h3 class="box-title">Vidas</h3>
- </a></div>
-               </div></div>
-            
-                    <div class="tab">
-                          
-                <div class="col-lg-4 col-sm-4 col-xs-12">
+                <div class="tab">
+                        
+                <div class="col-lg-4 col-sm-6 col-xs-12">
                     <div class="white-box analytics-info">
-                         <a href="#medallasT" data-toggle="tab">
-                        <h3 class="box-title">Medallas</h3></a>  </div>
-            </div></div>
-                  
-                    
-               </div>
+                           <a href="#vidas" data-toggle="tab">
+                        <h3 class="box-title">Vidas máximas</h3>
+                                    <ul class="list-inline two-part">
+                            <li>
+                                <div id="sparklinedash2"></div>
+                            </li>
+                            <li class="text-right"></i> <span class="counter text-purple">8</span></li>
+                        </ul>
+                               </a>
+       </div>
+                </div>
+                    </div>
+                
+                <div class="tab">
+                        
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <div class="white-box analytics-info">
+                           <a href="#medallas" data-toggle="tab">
+                        <h3 class="box-title">Medallas otorgadas</h3>
+                                    <ul class="list-inline two-part">
+                            <li>
+                                <div id="sparklinedash2"></div>
+                            </li>
+                            <li class="text-right"> <span class="counter text-purple">10</span></li>
+                        </ul>
+                               </a>
+       </div>
+                </div>
+                    </div>
+      
+ 
+            </div> 
                 
             
             
@@ -49,7 +80,7 @@
      
             <div class="tab-content" >
                 
-                 <div class="tab-pane active" id="monedasT">
+                 <div class="tab-pane" id="monedasT">
                 <div class="col-md-12">
                     <div class="white-box">
                         <h3 class="box-title">Lista estudiantes</h3>
@@ -76,11 +107,11 @@
                                         </td>
                                         <td class="text-center" >{{user.data.Moneda}}</td>                      <td>
                                             <div class="text-right">
-                                                <button type= "button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5" ng-click="substratCoins(user.uid, user.data.Moneda)">-</button>
+                                                <button type= "button" class="btn btn-info btn-outline btn-circle btn-sm m-r-5" ng-click="substratCoins(user.uid, user.data.Moneda)">-</button>
                                                 
                                                 <input id="{{user.uid}}" min="0" type="number" ng-model='coins' style="width: 50px;" />
                                                 
-                                                <button type= "button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5" ng-click="addCoins(user.uid, user.data.Moneda)">+</button>
+                                                <button type= "button" class="btn btn-info btn-outline btn-circle btn-sm m-r-5" ng-click="addCoins(user.uid, user.data.Moneda)">+</button>
                                             </div>
                                         </td>
                     
@@ -139,7 +170,7 @@
             </div>
              
             
-                             <div class="tab-pane" id="vidasT">
+                             <div class="tab-pane active" id="vidasT">
                 <div class="col-md-12">
                     <div class="white-box">
                         <h3 class="box-title">Lista estudiantes</h3>
@@ -167,11 +198,12 @@
                                        
                                         <td>{{user.data.Vida}}</td>                       
                                         <td>
-                                            <div>
-                                                <button class="btn btn-info" ng-click="substratLife(user.uid, user.data.Vida)">-</button>
-                                                <input id="{{user.uid}}" min="0" type="number" ng-model='Life' style="width: 50px;" />
-                                                <button class="btn btn-warning" ng-click="addLife(user.uid, user.data.Vida)">+</button>
-                                            </div>
+                                              <p>
+                                              <b>Vida</b>
+                                               <button class="btn btn-info" ng-click="substratVida(user.uid, user.data.Vida)">-</button>
+                                                <input id="life-{{user.uid}}" min="0" type="number" ng-model='vida' style="width: 50px;" />
+                                               <button class="btn btn-warning" ng-click="addVida(user.uid, user.data.Vida)">+</button>
+ +                                            </p>
                                         </td>
                     
                                     </tr>

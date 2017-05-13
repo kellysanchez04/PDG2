@@ -1,213 +1,314 @@
 
-<div ng-show="showStudent">
-<div id="wrapper">
+ <div ng-show="showStudent">
 
-    <!-- Page Content -->
-
-       <div id="page-wrapper">
+  <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row bg-title">
                 <div class="col-12">
                     <h4 class="page-title"> Lista de Tareas</h4> </div>
+                
+                 
             </div>
-
-            <!-- row -->
-
-            <!-- /.row -->
-            <!-- BEGIN MODAL -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel">
-	
-    <ul id="acordeonE" class="acordeonE">
-		
-        <li><div class="link"> titulo {{Titulo.actividades}}  </div>                
+            
+            
+            
+            
+               <div class="col-12">
+                  
+                         <div class="panel">
+                             
+                             <div class="p-20">
+                                <div class="row">
+                                    <div class="col-xs-6">
                                        
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-    
-			<li><div class="link">Titulo 2</div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-
-			<li><div class="link">Titulo 3</div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-        
-		<li><div class="link">Titulo 4</div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-
-		<li><div class="link">Titulo 5</div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-	</ul>	
-
-        
-                        
+                                         <h3 class="m-t-0 font-medium">UNIDAD 1</h3>
+                                    </div>
+                              
+                                </div>
+                            </div>
+                            
+                
+                        <div class="table-responsive">
+                            <table class="table table-hover manage-u-table">
+                                <thead>
+                                    <tr>
+                                        <th width="70" class="text-center">#</th>
+                                        <th>NOMBRE</th>
+                                        <th>PORCENTAJE</th>
+                                         <th>CALIFICACIÓN</th>
+                                         <th>ENTREGADO</th>
+                                 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        
+                                        <td class="text-center">1</td>
+                                        <td><a ui-sref="auth.task"><span class="font-medium">Resumen hci</span>
+                                            <br/><span class="text-muted">Entrega: 30 enero 2017</span></a></td>
+                                        <td>
+                                            <span class="text-muted"> 20% </span></td>
+                                       
+                                          <td>
+                                            <span class="text-muted"> 5 </span></td>
+                                       
+                                  <td>
+                                            <span class="text-muted"> SI </span></td>
+                                     
+                                            
+                                            
+                                    </tr>
+                                    
+                                  
+                       
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+            
+            
+            
+            
+            
+            
+            
+            
             </div>
-        </div>
+      </div>
 
-    </div>
+
 
 </div>
-                 <!--   
-                    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>*/-->
-	<script type="text/javascript">
-	
-       $(function(){
-       var AcordeonE = function (el, multiple){
-           this.el=el || {};
-           this.multiple = multiple || false;
-           
-          var links= this.el.find('.link');
-           links.on('click',this.dropdown);
-           
-       }
-       AcordeonE.prototype.dropdown = function(e){
-          var $this= $(this),
-              $next= $this.next();
-           
-           $next.slideToggle();
-              
-       }
-       var acordeonE = new AcordeonE($('#acordeonE'));
-       });
-	</script>
-</div>
-                    
-                    
+     </div>
+
+
+
+
   <div ng-show="showTeacher">
 
-<div id="wrapper">
- 
-    <!-- Page Content -->
 
        <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row bg-title">
                 <div class="col-12">
                     <h4 class="page-title"> Lista de Tareas</h4> </div>
+                
+                 <a href="#" target="_blank" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">agregar unidad</a>
             </div>
 
-            <!-- row -->
 
-            <!-- /.row -->
-            <!-- BEGIN MODAL -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="panel">
-	
-    <ul id="acordeon" class="acordeon">
-		
-        <li><div class="link">Titulo 1
-                
-                          <div class="botones">
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                               </div>
-                          </div>                
+              <div class="col-12">
+                  
+                         <div class="panel">
+                             
+                             <div class="p-20">
+                                <div class="row">
+                                    <div class="col-xs-6">
                                        
-	<ul class="submenu">
-        <li>El pasaje estándar Lorem Ipsum, usado desde el año 1500.
-
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</li>
-        <hr>
-        <li>Tarea </li>
-         <hr>
-         <li>Tarea </li>
-    
-        </ul
-        </li>
-    
-        <li><div class="link">Titulo 2
-                    <div class="botones">
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                               </div>
-                </div>
-               
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-
-			<li><div class="link">Titulo 3
-                    <div class="botones">
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                               </div>
-                
-                
-                </div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-        
-		<li><div class="link">Titulo 4
-                <div class="botones">
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                               </div>
-            
-            
-            
-            </div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-
-		<li><div class="link">Titulo 5
-                <div class="botones">
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
-                                            <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
-                               </div>
-            
-            
-            </div>
-	<ul class="submenu">
-        <li>Tarea </li>
-         <li>Tarea </li>
-         <li>Tarea </li>
-        </ul
-        </li>
-	</ul>	
-
-        
-                        
+                                         <h3 class="m-t-0 font-medium">UNIDAD 1</h3>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href="javascript:void(0)" class="pull-right btn btn-rounded btn-success m-t-15" data-toggle="modal" data-target="#myModal">Añadir tarea</a>        
+                                    </div>
+                                </div>
+                            </div>
+                            
+           
+                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Añadir tarea</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <div class="form-group">
+                                        <label for="exampleInputEmail1">  Titulo de la tarea</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe el nombre de la unidad">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleInputEmail2">Descripción</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe una descripción de la unidad">
+                                      </div>
+                                        
+                                           <div class="form-group">
+                                        <label for="exampleInputEmail2">Fecha</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe una descripción de la unidad">
+                                      </div>
+                                        
+                                           <div class="form-group">
+                                        <label for="exampleInputEmail2">porcentaje</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe una descripción de la unidad">
+                                      </div>
+                                    </form>
+                                          
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary"  data-dismiss="modal">Aceptar</button>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover manage-u-table">
+                                <thead>
+                                    <tr>
+                                        <th width="70" class="text-center">#</th>
+                                        <th>NOMBRE</th>
+                                        <th>PORCENTAJE</th>
+                                 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        
+                                        <td class="text-center">1</td>
+                                        <td><a ui-sref="auth.task"><span class="font-medium">Resumen hci</span>
+                                            <br/><span class="text-muted">Entrega: 30 enero 2017</span></a></td>
+                                        <td>
+                                            <span class="text-muted"> 20% </span></td>
+                                       
+                                       
+                                
+                                       <td>
+                                          <a href="#"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span></a>
+                                        </td>
+                                            
+                                            
+                                    </tr>
+                                    
+                                           <tr>
+                                        
+                                        <td class="text-center">2</td>
+                                        <td><a ui-sref="auth.task"><span class="font-medium">Entrega pruebas de usuario</span>
+                                            <br/><span class="text-muted">Entrega: 30 enero 2017</span></a></td>
+                                        <td><span class="text-muted"> 20% </span></td>
+                                       
+                                       
+                                
+                                        <td >
+                                         <a ui-sref="auth.task"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span></a>
+                                        </td>
+                                            
+                                    </tr>
+                       
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            </div>
+                 
+                  
+                  
+                                <div class="panel">
+                             
+                             <div class="p-20">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                       
+                                         <h3 class="m-t-0 font-medium">UNIDAD 2</h3>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <a href="javascript:void(0)" class="pull-right btn btn-rounded btn-success m-t-15" data-toggle="modal" data-target="#myModal">Añadir tarea</a>        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                  
+                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">Añadir tarea</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form>
+                                      <div class="form-group">
+                                        <label for="exampleInputEmail1">  Titulo de la tarea</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe el nombre de la tarea">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="exampleInputEmail2">Descripción</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe una descripción de la tarea">
+                                      </div>
+                                        
+                                           <div class="form-group">
+                                        <label for="exampleInputEmail2">Fecha</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="dd/mm/yy">
+                                      
+                                        <label for="exampleInputEmail2">porcentaje</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="porcentaje de la tarea">
+                                      </div>
+                                    </form>
+                                          
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary"  data-dismiss="modal">Aceptar</button>
+                                  </div>
+                                </div><
+                              </div>
+                          </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover manage-u-table">
+                                <thead>
+                                    <tr>
+                                        <th width="70" class="text-center">#</th>
+                                        <th>NOMBRE</th>
+                                        <th>PORCENTAJE</th>
+                                 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        
+                                        <td class="text-center">1</td>
+                                        <td><a ui-sref="auth.task"><span class="font-medium">Resumen hci</span>
+                                            <br/><span class="text-muted">Entrega: 30 enero 2017</span></a></td>
+                                        <td>
+                                            <span class="text-muted"> 20% </span></td>
+                                       
+                                       
+                                
+                                       <td>
+                                          <a href="#"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span></a>
+                                        </td>
+                                            
+                                            
+                                    </tr>
+                                    
+                                           <tr>
+                                        
+                                        <td class="text-center">2</td>
+                                        <td><a ui-sref="auth.task"><span class="font-medium">Entrega pruebas de usuario</span>
+                                            <br/><span class="text-muted">Entrega: 30 enero 2017</span></a></td>
+                                        <td><span class="text-muted"> 20% </span></td>
+                                       
+                                       
+                                
+                                        <td >
+                                          <a href="#"><span class="circle circle-sm bg-danger di"><i class="ti-trash"></i></span></a>
+                                        </td>
+                                            
+                                    </tr>
+                       
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                     
+                    </div>
+     
+            
+            
+            
+        
         </div>
 
     </div>
@@ -237,36 +338,12 @@
 
 
 
-<!-- acordeon -->
-     
-	<script type="text/javascript">
-	
-       $(function(){
-       var Acordeon = function (el, multiple){
-           this.el=el || {};
-           this.multiple = multiple || false;
-           
-          var links= this.el.find('.link');
-           links.on('click',this.dropdown);
-           
-       }
-       Acordeon.prototype.dropdown = function(e){
-          var $this= $(this),
-              $next= $this.next();
-           
-           $next.slideToggle();
-              
-       }
-       var acordeon = new Acordeon($('#acordeon'));
-       });
-	</script>
 
 
 </div>
 
                    
-                         <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>      
-                    
+                       
                     
                     
                     

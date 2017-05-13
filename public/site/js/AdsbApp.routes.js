@@ -57,12 +57,35 @@
                 templateUrl: "views/rowlot/calendar.html",
                 controller: "RowlotController"
             })
+           .state("auth.rowlot-biblioteca", {
+                page_title: "Rowlot - biblioteca",
+                url: "/biblioteca",
+                templateUrl: "views/rowlot/biblioteca.html",
+                controller: "RowlotController"
+            })
             .state("auth.rowlot-listtask", {
-                page_title: "Rowlot - Dashboard",
+                page_title: "Rowlot - List",
                 url: "/task",
                 templateUrl: "views/rowlot/listtask.html",
                 controller: "RowlotController"
             })
+                    .state("auth.task", {
+                page_title: "Rowlot - task",
+                url: "/description",
+                templateUrl: "views/rowlot/task.html",
+                controller: "RowlotController"
+            })
+        
+                  .state("auth.documentation", {
+                page_title: "Rowlot - documentation",
+                url: "/documentation",
+                templateUrl: "views/rowlot/documentation.html",
+                controller: "RowlotController"
+            })
+        
+        
+         
+        
 
              .state("auth.rowlot-profile", {
                 page_title: "Rowlot - profile",
@@ -70,6 +93,10 @@
                 templateUrl: "views/rowlot/profile.html",
                 controller: "RowlotController"
             })
+        
+ 
+
+        
 
     };
 } ());

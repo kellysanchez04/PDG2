@@ -11,26 +11,31 @@
         <div class="sidebar-head">
             <a href="index5.html"><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> </a> </div>
         
-  <ul class="nav" id="side-menu" style="color:#fff">
-     <li> <a ui-sref="auth.rowlot-profile" class="waves-effect">
-  <div class="overlay-box">
-       <div class="user-bg">
-                                  <div class="overlay-box"><div class="user-content">
-                                   <img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"> <br>
-                                      
-                                      <h4 style="color:#fff"> {{profile.Nombre}} {{profile.Apellido}}</h4>
-                                        
-                                    
-                                   
-                                    </div>
-                            </div>  </div></div>
-         </a>
-      </li>
+        <ul class="nav" id="side-menu" style="color:#fff">
+            <li> <a ui-sref="auth.rowlot-profile" class="waves-effect">
+                 <div class="overlay-box">
+                     <div class="user-bg">
+                         <div class="overlay-box"><div class="user-content">
+                             <img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"> <br>
+ 
+                             <h4 style="color:#fff"> {{profile.Nombre}} {{profile.Apellido}}</h4>
+ 
+ 
+ 
+                             </div>
+                         </div>  </div></div>
+                 </a>
+             </li>
+             <!--   <li class="devider" style="
+ +background: #edf1f5;"></li>-->
+            <li> <a ui-sref="auth.rowlot" class="waves-effect"><i class="mdi mdi-table fa-fw"></i> <span class="hide-menu">Ranking</span></a>
+              </li>
+      
+      
+      
      <!--   <li class="devider" style="
     background: #edf1f5;"></li>-->
-            <li> <a ui-sref="auth.rowlot" class="waves-effect"><i class="mdi mdi-table fa-fw"></i> <span class="hide-menu">Ranking</span></a>
 
-            </li>
       
     
             <!--  <li class="devider"></li>-->
@@ -48,16 +53,17 @@
 
             </li>
       
-       <li> <a ui-sref="auth.calendar" class="waves-effect"><i class="fa fa-bandcamp" aria-hidden="true"></i></i> <span class="hide-menu">canlendario</span></a>
+       <li> <a ui-sref="auth.calendar" class="waves-effect"><i class="fa fa-bandcamp" aria-hidden="true"></i><span class="hide-menu">canlendario</span></a>
 
             </li>
-             
+                        <li> <a ui-sref="auth.rowlot-biblioteca" class="waves-effect"><i class="fa fa-bandcamp" aria-hidden="true"></i> <span class="hide-menu">Biblioteca</span></a>
+           </li>
            
             <!--    <li class="devider"></li>-->
-       
-                
-            <li><a href="documentation.html" class="waves-effect"><i class="fa fa-circle-o text-danger"></i> <span class="hide-menu">Documentación</span></a></li>
-           <!-- <li><a href="faq.html" class="waves-effect"><i class="fa fa-circle-o text-success"></i> <span class="hide-menu">Ayuda</span></a></li-->
+              <li> <a ui-sref="auth.documentation" class="waves-effect"><i class="fa fa-bandcamp" aria-hidden="true"></i><span class="hide-menu">Documentacion</span></a>
+
+            </li>
+
         </ul>
 
     </div>
