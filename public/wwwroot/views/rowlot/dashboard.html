@@ -1,14 +1,5 @@
-  
-  <div ng-show="showTeacher">
-<div id="wrapper">
-    <!-- Page Content -->
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row bg-title">
-                <div class="col-12">
-                    <h4 class="page-title"> Ranking</h4> </div>
-            </div>
 
+<<<<<<< HEAD
                   
              <div class="row">
                 
@@ -34,8 +25,32 @@
                         </ul>
                                </a>
        </div>
+=======
+<div ng-show="showTeacher">
+    <div id="wrapper">
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-12">
+                        <h4 class="page-title"> perfil</h4> </div>
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
                 </div>
+
+
+
+                <div class="row">
+                    <div class="active tab">
+
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="#monedasT" data-toggle="tab">
+                                    <h3 class="box-title">Monedas</h3>
+                                </a>
+                            </div>
+                        </div>
                     </div>
+<<<<<<< HEAD
                 
                 <div class="tab">
                         
@@ -118,54 +133,124 @@
                                     </tr>
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                    </div>
+=======
+
+                    <div class="tab">
+
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="#vidasT" data-toggle="tab">
+                                    <h3 class="box-title">Vidas</h3>
+                                </a></div>
+                        </div></div>
+
+                    <div class="tab">
+
+                        <div class="col-lg-4 col-sm-4 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="#medallasT" data-toggle="tab">
+                                    <h3 class="box-title">Medallas</h3></a>  </div>
+                        </div></div>
+
+
                 </div>
-            </div>
-       
-                             <div class="tab-pane" id="medallasT">
-                <div class="col-md-12">
-                    <div class="white-box">
-                        <h3 class="box-title">Lista estudiantes</h3>
-                        <div class="scrollable">
-                            <div class="table-responsive">
-                                <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
-                                    <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Nombre</th>
-                                        <th>Medallas</th>
-                                        <th>Editar</th>
-                 
-                                    </tr>
-                                    </thead>
-                                    <tbody ng-init="database()">
-                                    <tr ng-repeat="(index,user) in users">
-                                        <td>{{index+1}}</td>
-                                        <td>
-                                            <a href="contact-detail.html">
-                                                <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
-                                                     {{user.data.Nombre}} {{user.data.Apellido}}
-                                          
-                                         </a>
-                                        </td>
-                                       
-                                        <td>{{user.data.Medalla}}</td>
-          
-                                        <td>
-                                            <div>
-                                                <button class="btn btn-info" ng-click="substratMedalla(user.uid, user.data.Medalla)">-</button>
-                                                <input id="metal-{{user.uid}}" min="0" type="number" ng-model='metal' style="width: 50px;" />
-                                                <button class="btn btn-warning" ng-click="addMedalla(user.uid, user.data.Medalla)">+</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+
+
+                <!--vista profesor contenido  -->
+
+                <div class="tab-content" >
+
+                    <div class="tab-pane active" id="monedasT">
+                        <div class="col-md-12">
+                            <div class="white-box">
+                                <h3 class="box-title">Lista estudiantes</h3>
+                                <div class="scrollable">
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+                                            <thead>
+                                                <tr>
+                                                    <th>Rank</th>
+                                                    <th>Nombre</th>
+                                                    <th  class="text-center">Monedas</th> 
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-init="database()">
+                                                <tr ng-repeat="(index,user) in users">
+                                                    <td>{{index+1}}</td>
+                                                    <td>
+                                                        <a href="contact-detail.html">
+                                                            <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
+                                                            {{user.data.Nombre}} {{user.data.Apellido}}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-center" >{{user.data.Moneda}}</td>                      <td>
+                                                    <div class="text-right">
+                                                        <button type= "button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5" ng-click="substratCoins(user.uid, user.data.Moneda)">-</button>
+
+                                                        <input id="{{user.uid}}" min="0" type="number" ng-model='coins' style="width: 50px;" />
+
+                                                        <button type= "button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5" ng-click="addCoins(user.uid, user.data.Moneda)">+</button>
+                                                    </div>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
                             </div>
                         </div>
                     </div>
+
+                    <div class="tab-pane" id="medallasT">
+                        <div class="col-md-12">
+                            <div class="white-box">
+                                <h3 class="box-title">Lista estudiantes</h3>
+                                <div class="scrollable">
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+                                            <thead>
+                                                <tr>
+                                                    <th>Rank</th>
+                                                    <th>Nombre</th>
+                                                    <th>Medallas</th>
+                                                    <th>Editar</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-init="database()">
+                                                <tr ng-repeat="(index,user) in users">
+                                                    <td>{{index+1}}</td>
+                                                    <td>
+                                                        <a href="contact-detail.html">
+                                                            <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
+                                                            {{user.data.Nombre}} {{user.data.Apellido}}
+
+                                                        </a>
+                                                    </td>
+
+                                                    <td>{{user.data.Medalla}}</td>
+
+                                                    <td>
+                                                        <div>
+                                                            <button class="btn btn-info" ng-click="substratMedalla(user.uid, user.data.Medalla)">-</button>
+                                                            <input id="metal-{{user.uid}}" min="0" type="number" ng-model='metal' style="width: 50px;" />
+                                                            <button class="btn btn-warning" ng-click="addMedalla(user.uid, user.data.Medalla)">+</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<<<<<<< HEAD
                 </div>
             </div>
              
@@ -209,145 +294,186 @@
                                     </tr>
                                     </tbody>
                                 </table>
+=======
+
+
+                    <div class="tab-pane" id="vidasT">
+                        <div class="col-md-12">
+                            <div class="white-box">
+                                <h3 class="box-title">Lista estudiantes</h3>
+                                <div class="scrollable">
+                                    <div class="table-responsive">
+                                        <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+                                            <thead>
+                                                <tr>
+                                                    <th>Rank</th>
+                                                    <th>Nombre</th>
+                                                    <th>Vidas</th> 
+                                                    <th>Editar</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody ng-init="database()">
+                                                <tr ng-repeat="(index,user) in users">
+                                                    <td>{{index+1}}</td>
+                                                    <td>
+                                                        <a href="contact-detail.html">
+                                                            <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
+                                                            {{user.data.Nombre}} {{user.data.Apellido}}
+                                                        </a>
+                                                    </td>
+
+                                                    <td>{{user.data.Vida}}</td>                       
+                                                    <td>
+                                                        <p>
+                                                            <b>Vida</b>
+                                                            <button class="btn btn-info" ng-click="substratVida(user.uid, user.data.Vida)">-</button>
+                                                            <input id="life-{{user.uid}}" min="0" type="number" ng-model='vida' style="width: 50px;" />
+                                                            <button class="btn btn-warning" ng-click="addVida(user.uid, user.data.Vida)">+</button>
+                                                        </p>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            
-            
-            </div>
 
-              </div> 
-         </div>     
+
+
+                </div>
+
+            </div> 
+        </div>     
     </div>
 </div>
 
 <div ng-show="showStudent">
-      <div id="wrapper">
-    <!-- Page Content -->
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row bg-title">
-                <div class="col-12">
-                    <h4 class="page-title"> Ranking</h4> </div>
+    <div id="wrapper">
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-12">
+                        <h4 class="page-title"> Ranking</h4> </div>
 
-                <!-- /.col-lg-12 -->
+                    <!-- /.col-lg-12 -->
+                </div>
+
+
+
+
+                <!--/.cierra vista profesor -->
+
+
+
+                <!-- .vista estudiantes-->
+                <div class="row">
+
+
+
+                    <div class="active tab">
+
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="#monedas" data-toggle="tab">
+                                    <h3 class="box-title">Monedas</h3>
+                                    <ul class="list-inline two-part">
+                                        <li>
+                                            <div id="sparklinedash2"></div>
+                                        </li>
+                                        <li class="text-right"><i class="fa fa-bandcamp" aria-hidden="true"></i> <span class="counter text-purple">{{profile.Moneda}}</span></li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab">
+
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="white-box analytics-info">
+                                <a href="#vidas" data-toggle="tab">
+                                    <h3 class="box-title">Vidas</h3>
+                                    <ul class="list-inline two-part">
+                                        <li>
+                                            <div id="sparklinedash2"></div>
+                                        </li>
+                                        <li class="text-right"></i> <span class="counter text-purple">{{profile.Vida}}</span></li>
+                                </ul>
+                            </a>
+                    </div>
+                </div>
             </div>
 
-            
-            
-         
-            <!--/.cierra vista profesor -->
+            <div class="tab">
 
-            
-            
-                        <!-- .vista estudiantes-->
-           <div class="row">
-                
-        
-                
-                <div class="active tab">
-                        
                 <div class="col-lg-4 col-sm-6 col-xs-12">
                     <div class="white-box analytics-info">
-                           <a href="#monedas" data-toggle="tab">
-                        <h3 class="box-title">Monedas</h3>
-                                    <ul class="list-inline two-part">
-                            <li>
-                                <div id="sparklinedash2"></div>
-                            </li>
-                            <li class="text-right"><i class="fa fa-bandcamp" aria-hidden="true"></i> <span class="counter text-purple">{{profile.Moneda}}</span></li>
-                        </ul>
-                               </a>
-       </div>
-                </div>
+                        <a href="#medallas" data-toggle="tab">
+                            <h3 class="box-title">Medallas</h3>
+                            <ul class="list-inline two-part">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right"> <span class="counter text-purple">{{profile.Medalla}}</span></li>
+                            </ul>
+                        </a>
                     </div>
-                
-                <div class="tab">
-                        
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                    <div class="white-box analytics-info">
-                           <a href="#vidas" data-toggle="tab">
-                        <h3 class="box-title">Vidas</h3>
-                                    <ul class="list-inline two-part">
-                            <li>
-                                <div id="sparklinedash2"></div>
-                            </li>
-                            <li class="text-right"></i> <span class="counter text-purple">{{profile.Vida}}</span></li>
-                        </ul>
-                               </a>
-       </div>
                 </div>
-                    </div>
-                
-                <div class="tab">
-                        
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                    <div class="white-box analytics-info">
-                           <a href="#medallas" data-toggle="tab">
-                        <h3 class="box-title">Medallas</h3>
-                                    <ul class="list-inline two-part">
-                            <li>
-                                <div id="sparklinedash2"></div>
-                            </li>
-                            <li class="text-right"> <span class="counter text-purple">{{profile.Medalla}}</span></li>
-                        </ul>
-                               </a>
-       </div>
-                </div>
-                    </div>
-      
- 
-            </div> 
-            <!--/.cierra vista estudiantes
+            </div>
 
-                 
 
-               <!--vista estudiante contenido  -->   
-         
-            <div class="tab-content" >
-                
-                 <div class="tab-pane active" id="monedas">
-                  <div class="col-md-12">
+        </div> 
+        <!--/.cierra vista estudiantes
+
+
+
+<!--vista estudiante contenido  -->   
+
+        <div class="tab-content" >
+
+            <div class="tab-pane active" id="monedas">
+                <div class="col-md-12">
                     <div class="white-box">
                         <h3 class="box-title"> Ranking de monedas</h3>
                         <div class="scrollable">
                             <div class="table-responsive">
                                 <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
                                     <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Nombre</th>
-                                        <th>Monedas</th> 
-                                        <th style="width: 40%; text-align:center;">Promedio</th>
-                                       
-                                    </tr>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Nombre</th>
+                                            <th>Monedas</th> 
+                                            <th style="width: 40%; text-align:center;">Promedio</th>
+
+                                        </tr>
                                     </thead>
                                     <tbody ng-init="database()">
-                                    <tr ng-repeat="(index,user) in users">
-                                        <td>{{index+1}}</td>
-                                        <td>
-                                            <a href="contact-detail.html">
-                                                <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
-                                                     {{user.data.Nombre}} {{user.data.Apellido}}
-                                         </a>
-                                        </td>
-                                       
-                                        <td text-align>{{user.data.Moneda}}</td>                               
-                                        <td>    <div>
-                                            
-                                            <p> <span style= "margin-right: 10px" class="pull-left text-muted"><b>60%</b>   </span> </p>
-                                            
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #ffc36d;border-radius: 6px; "> <span class="sr-only">60% Complete (success)</span> </div>
-                                            </div>
-                                        </div>
-                                        </td>
+                                        <tr ng-repeat="(index,user) in users">
+                                            <td>{{index+1}}</td>
+                                            <td>
+                                                <a href="contact-detail.html">
+                                                    <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
+                                                    {{user.data.Nombre}} {{user.data.Apellido}}
+                                                </a>
+                                            </td>
 
-                    
-                                    </tr>
+                                            <td text-align>{{user.data.Moneda}}</td>                               
+                                            <td>    <div>
+
+                                                <p> <span style= "margin-right: 10px" class="pull-left text-muted"><b>60%</b>   </span> </p>
+
+                                                <div class="progress progress-striped active">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #ffc36d;border-radius: 6px; "> <span class="sr-only">60% Complete (success)</span> </div>
+                                                </div>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -355,8 +481,8 @@
                     </div>
                 </div>
             </div>
-       
-                             <div class="tab-pane" id="medallas">
+
+            <div class="tab-pane" id="medallas">
                 <div class="col-md-12">
                     <div class="white-box">
                         <h3 class="box-title"> Ranking de Medallas</h3>
@@ -364,37 +490,37 @@
                             <div class="table-responsive">
                                 <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
                                     <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Nombre</th>
-                                        <th>Medallas</th> 
-                                        <th style="width: 40%; text-align:center;">Promedio</th>
-                                       
-                                    </tr>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Nombre</th>
+                                            <th>Medallas</th> 
+                                            <th style="width: 40%; text-align:center;">Promedio</th>
+
+                                        </tr>
                                     </thead>
                                     <tbody ng-init="database()">
-                                    <tr ng-repeat="(index,user) in users">
-                                        <td>{{index+1}}</td>
-                                        <td>
-                                            <a href="contact-detail.html">
-                                                <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
-                                                     {{user.data.Nombre}} {{user.data.Apellido}}
-                                         </a>
-                                        </td>
-                                       
-                                        <td text-align>{{user.data.Medalla}}</td>                               
-                                        <td>    <div>
-                                            
-                                            <p> <span style= "margin-right: 10px" class="pull-left text-muted"><b>60%</b>   </span> </p>
-                                            
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #ffc36d;border-radius: 6px; "> <span class="sr-only">60% Complete (success)</span> </div>
-                                            </div>
-                                        </div>
-                                        </td>
+                                        <tr ng-repeat="(index,user) in users">
+                                            <td>{{index+1}}</td>
+                                            <td>
+                                                <a href="contact-detail.html">
+                                                    <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
+                                                    {{user.data.Nombre}} {{user.data.Apellido}}
+                                                </a>
+                                            </td>
 
-                    
-                                    </tr>
+                                            <td text-align>{{user.data.Medalla}}</td>                               
+                                            <td>    <div>
+
+                                                <p> <span style= "margin-right: 10px" class="pull-left text-muted"><b>60%</b>   </span> </p>
+
+                                                <div class="progress progress-striped active">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #ffc36d;border-radius: 6px; "> <span class="sr-only">60% Complete (success)</span> </div>
+                                                </div>
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -402,8 +528,8 @@
                     </div>
                 </div>
             </div>
-            
-                             <div class="tab-pane" id="vidas">
+
+            <div class="tab-pane" id="vidas">
                 <div class="col-md-12">
                     <div class="white-box">
                         <h3 class="box-title"> Ranking de las vidas</h3>
@@ -411,37 +537,37 @@
                             <div class="table-responsive">
                                 <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
                                     <thead>
-                                    <tr>
-                                        <th>Rank</th>
-                                        <th>Nombre</th>
-                                        <th>Vidas</th> 
-                                        <th style="width: 40%; text-align:center;">Promedio</th>
-                                       
-                                    </tr>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Nombre</th>
+                                            <th>Vidas</th> 
+                                            <th style="width: 40%; text-align:center;">Promedio</th>
+
+                                        </tr>
                                     </thead>
                                     <tbody ng-init="database()">
-                                    <tr ng-repeat="(index,user) in users">
-                                        <td>{{index+1}}</td>
-                                        <td>
-                                            <a href="contact-detail.html">
-                                                <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
-                                                     {{user.data.Nombre}} {{user.data.Apellido}}
-                                         </a>
-                                        </td>
-                                       
-                                        <td text-align>{{user.data.Vida}}</td>                               
-                                        <td>    <div>
-                                            
-                                            <p> <span style= "margin-right: 10px" class="pull-left text-muted"><b>60%</b>   </span> </p>
-                                            
-                                            <div class="progress progress-striped active">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #ffc36d;border-radius: 6px; "> <span class="sr-only">60% Complete (success)</span> </div>
-                                            </div>
-                                        </div>
-                                        </td>
+                                        <tr ng-repeat="(index,user) in users">
+                                            <td>{{index+1}}</td>
+                                            <td>
+                                                <a href="contact-detail.html">
+                                                    <img src="../plugins/images/users/genu.jpg" alt="user" class="img-circle" />   
+                                                    {{user.data.Nombre}} {{user.data.Apellido}}
+                                                </a>
+                                            </td>
 
-                    
-                                    </tr>
+                                            <td text-align>{{user.data.Vida}}</td>                               
+                                            <td>    <div>
+
+                                                <p> <span style= "margin-right: 10px" class="pull-left text-muted"><b>60%</b>   </span> </p>
+
+                                                <div class="progress progress-striped active">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%; background: #ffc36d;border-radius: 6px; "> <span class="sr-only">60% Complete (success)</span> </div>
+                                                </div>
+                                                </div>
+                                            </td>
+
+
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -450,13 +576,13 @@
                 </div>
             </div>
 
-            </div>          
- 
-        </div>
-</div>
+        </div>          
+
     </div>
-       </div>
-      
+</div>
+</div>
+</div>
+
 
 
 

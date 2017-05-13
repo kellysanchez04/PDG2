@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
  <div ng-show="showStudent">
 
   <div id="page-wrapper">
@@ -63,6 +64,54 @@
                        
                                 </tbody>
                             </table>
+=======
+<div ng-show="showStudent">
+    <div id="wrapper">
+
+        <!-- Page Content -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-12">
+                        <h4 class="page-title"> Lista de Tareas</h4> </div>
+                </div>
+
+                <!-- row -->
+
+                <!-- /.row -->
+                <!-- BEGIN MODAL -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tab-pane">
+                            <div class="col-md-12">
+                                <div class="white-box">
+                                    <h3 class="box-title"> Unidades</h3>
+                                    <div class="table-responsive">
+                                        <table class="table m-t-30 table-hover">
+                                            <tbody ng-init="database()">
+                                                <ul id="acordeonE" class="acordeonE">
+                                                    <li>
+                                                        <tr ng-repeat="(index,unidad) in unidades">
+                                                           <div class="link">
+                                                            <td>
+                                                                    {{unidad.data.Titulo}}
+                                                            </td>
+                                                            
+                                                            <td>
+                                                                    {{unidad.data.Actividades}}
+                                                            </td>
+                                                            </div>
+                                                        </tr>
+                                                     </li>
+                                                </ul>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
                         </div>
                     </div>
             
@@ -74,11 +123,41 @@
             
             
             </div>
+<<<<<<< HEAD
       </div>
 
 
+=======
 
+        </div>
+
+    </div>
+    <!--   
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>*/-->
+    <script type="text/javascript">
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
+
+        $(function(){
+            var AcordeonE = function (el, multiple){
+                this.el=el || {};
+                this.multiple = multiple || false;
+
+                var links= this.el.find('.link');
+                links.on('click',this.dropdown);
+
+            }
+            AcordeonE.prototype.dropdown = function(e){
+                var $this= $(this),
+                    $next= $this.next();
+
+                $next.slideToggle();
+
+            }
+            var acordeonE = new AcordeonE($('#acordeonE'));
+        });
+    </script>
 </div>
+<<<<<<< HEAD
      </div>
 
 
@@ -310,12 +389,124 @@
             
         
         </div>
-
-    </div>
-
-</div>
+=======
 
 
+<div ng-show="showTeacher">
+
+    <div id="wrapper">
+
+        <!-- Page Content -->
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-12">
+                        <h4 class="page-title"> Lista de Tareas</h4> </div>
+                </div>
+
+                <!-- row -->
+
+                <!-- /.row -->
+                <!-- BEGIN MODAL -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+
+                            <ul id="acordeon" class="acordeon">
+
+                                <li><div class="link">Titulo 1
+
+                                    <div class="botones">
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                    </div>
+                                    </div>                
+
+                                    <ul class="submenu">
+                                        <li>El pasaje estándar Lorem Ipsum, usado desde el año 1500.
+
+                                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</li>
+                                        <hr>
+                                        <li>Tarea </li>
+                                        <hr>
+                                        <li>Tarea </li>
+
+                                    </ul>
+                                </li>
+
+                                <li><div class="link">Titulo 2
+                                    <div class="botones">
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                    </div>
+                                    </div>
+
+                                    <ul class="submenu">
+                                        <li>Tarea </li>
+                                        <li>Tarea </li>
+                                        <li>Tarea </li>
+                                    </ul>
+                                </li>
+
+                                <li><div class="link">Titulo 3
+                                    <div class="botones">
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
+                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                    </div>
+
+
+                                    </div>
+                                    <ul class="submenu">
+                                        <li>Tarea </li>
+                                        <li>Tarea </li>
+                                        <li>Tarea </li>
+                                    </ul
+                                        </li>
+
+                                        <li><div class="link">Titulo 4
+                                            <div class="botones">
+                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
+                                                <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                            </div>
+
+
+
+                                            </div>
+                                            <ul class="submenu">
+                                                <li>Tarea </li>
+                                                <li>Tarea </li>
+                                                <li>Tarea </li>
+                                            </ul
+                                                </li>
+
+                                                <li><div class="link">Titulo 5
+                                                    <div class="botones">
+                                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-2"><i class="ti-trash"></i></button>
+                                                        <button type="button" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>
+                                                    </div>
+
+
+                                                    </div>
+                                                    <ul class="submenu">
+                                                        <li>Tarea </li>
+                                                        <li>Tarea </li>
+                                                        <li>Tarea </li>
+                                                    </ul
+                                                        </li>
+                                                    </ul>	
+
+
+
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                    </div>
+
+                </div>
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
 
 
 
@@ -340,8 +531,56 @@
 
 
 
-</div>
+                <!-- acordeon -->
 
+                <script type="text/javascript">
+
+<<<<<<< HEAD
+=======
+                    $(function(){
+                        var Acordeon = function (el, multiple){
+                            this.el=el || {};
+                            this.multiple = multiple || false;
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
+
+                            var links= this.el.find('.link');
+                            links.on('click',this.dropdown);
+
+                        }
+                        Acordeon.prototype.dropdown = function(e){
+                            var $this= $(this),
+                                $next= $this.next();
+
+                            $next.slideToggle();
+
+                        }
+                        var acordeon = new Acordeon($('#acordeon'));
+                    });
+                </script>
+
+
+            </div>
+
+
+            <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- acordeon -->
+
+<<<<<<< HEAD
                    
                        
                     
@@ -360,6 +599,8 @@
                     
 <!-- acordeon -->
 	
+=======
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
 
 
 

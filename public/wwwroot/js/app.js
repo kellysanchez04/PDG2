@@ -474,6 +474,7 @@
                 console.log(error);
             });
         }
+<<<<<<< HEAD
 
         var loadUsers = function(){
             return RowlotService.getUsers().then(function (response) {          
@@ -488,6 +489,22 @@
         }
 
 
+=======
+
+        var loadUsers = function(){
+            return RowlotService.getUsers().then(function (response) {          
+                //    console.log("Users", response);
+                $scope.users = response;
+                console.log("ENTRO ACTIVIDAD",$scope.users);
+               // console.log("SCOPE USERS",$scope.users);
+            }, function (error) {
+                toastr.error("Error al cargar usuarios");
+                console.log(error);
+            });     
+        }
+
+
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
       
         var loadCurrentActivity = function(){
             return RowlotService.getCurrentActivity().then(function(response){
@@ -595,6 +612,11 @@
         /* var showActivity = function(visible){         
             return visible=="si";
         }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
         var NoShowActivity = function(visible){         
             return visible=="no";
         }
@@ -716,6 +738,10 @@
 
 /*
         var updateTitleActividad = function(tareaId, title){
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
             var tareaRef = firebase.database().ref('/Actividad/' + tareaId);
             tareaRef.update({
                 Titulo: title
@@ -837,6 +863,7 @@
 
         // Inicializa los datos del perfil del usuario
         var initialize = function () {
+<<<<<<< HEAD
 
             var user = {
                 username: "",
@@ -857,6 +884,28 @@
 
         var profile = initialize();
 
+=======
+
+            var user = {
+                username: "",
+                token: "",
+                get loggedIn() {
+                    return this.token != "";
+                }
+            }
+            // Si existe un usuario almacenado se recupera
+            var localUser = LocalStorageService.get(USERKEY);
+            if (localUser) {
+                user.username = localUser.username;
+                user.token = localUser.token;
+            }
+
+            return user;
+        };
+
+        var profile = initialize();
+
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
         return {
             removeProfile: removeProfile,
             setProfile: setProfile,
@@ -1519,3 +1568,11 @@
 
 })();
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 4ce9c74e744135e14550ea3e5b5ada13d1b50f19
