@@ -1,0 +1,39 @@
+
+<div id="wrapper">
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div class="row bg-title">
+                <div class="col-12">
+                    <h4 class="page-title">Biblioteca</h4> </div>
+            </div>
+        </div>
+        <!-- MIGA DE NAVEGACIoN -->
+
+
+        <div class="gridListdemoBasicUsage" ng-controller="AppCtrl as appCtrl">
+
+            <h1>Lecturas</h1>
+            <div class='md-padding' layout="row" layout-wrap>
+                <md-card style="width: 300px;" ng-repeat="user in users">
+                    <img src="http://placehold.it/150x150" class="md-card-image" alt="user avatar">
+                    <md-card-content>
+                        <h2>{{user}}</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                    </md-card-content>
+                    <div class="md-actions" layout="row" layout-align="end center">
+                        <a href="" ng-click=""><md-button>Descargar</md-button></a>
+                        <md-button>Ver</md-button>
+                    </div>
+                </md-card>
+            </div>
+        </div>
+
+
+
+
+        <!-- /.col-lg-12 -->
+
+
+    </div>
+</div>

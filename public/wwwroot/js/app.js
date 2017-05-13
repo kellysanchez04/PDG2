@@ -10,21 +10,21 @@
     'use strict';
 
     angular.module("AdsbApp",
-        ["ngTouch",
-         "toastr",
-         "firebase",
-         "ui.router",
-         "ngCookies",
-         "ngAnimate",
-         'oc.lazyLoad',
-         "ui.bootstrap",
-         "ngMessages",
-         "ngMaterial",
-         "ncy-angular-breadcrumb",
-         "uiGmapgoogle-maps",
-         "vAccordion",
-         "angular-loading-bar"
-        ]);
+                   ["ngTouch",
+                    "toastr",
+                    "firebase",
+                    "ui.router",
+                    "ngCookies",
+                    "ngAnimate",
+                    'oc.lazyLoad',
+                    "ui.bootstrap",
+                    "ngMessages",
+                    "ngMaterial",
+                    "ncy-angular-breadcrumb",
+                    "uiGmapgoogle-maps",
+                    "vAccordion",
+                    "angular-loading-bar"
+                   ]);
 }());
 
 /**
@@ -39,8 +39,8 @@
     "use strict";
 
     angular.module("AdsbApp")
-           .config(configInterceptors)         
-           .config(configLoader);
+        .config(configInterceptors)         
+        .config(configLoader);
 
     configInterceptors.$inject = ["$httpProvider"];
 
@@ -50,7 +50,7 @@
         $httpProvider.interceptors.push("AddTokenService");
         $httpProvider.interceptors.push("LoginRedirectService");
     }
-  
+
 
     configLoader.$inject = ['cfpLoadingBarProvider'];
 
@@ -84,56 +84,63 @@
 
         $stateProvider
 
-            // Login
+        // Login
             .state("login", {
-                page_title: "Rowlot - Iniciar Sesión",
-                url: "/login",
-                templateUrl: "views/login.html",
-                controller: "LoginController"
-            })
-            // Signup
+            page_title: "Rowlot - Iniciar Sesión",
+            url: "/login",
+            templateUrl: "views/login.html",
+            controller: "LoginController"
+        })
+        // Signup
             .state("signup", {
-                page_title: "Rowlot - Registro",
-                url: "/signup",
-                templateUrl: "views/signup.html",
-                controller: "LoginController"
-            })
+            page_title: "Rowlot - Registro",
+            url: "/signup",
+            templateUrl: "views/signup.html",
+            controller: "LoginController"
+        })
 
-            // Authenticated
+        // Authenticated
             .state("auth", {
-                abstract: true,
-                // this state url
-                url: "",
-                templateUrl: "views/common/authenticated.html"
-            })
+            abstract: true,
+            // this state url
+            url: "",
+            templateUrl: "views/common/authenticated.html"
+        })
 
             .state("auth.rowlot", {
-                page_title: "Rowlot - Dashboard",
-                url: "/dashboard",
-                templateUrl: "views/rowlot/dashboard.html",
-                controller: "RowlotController"
-            })
+            page_title: "Rowlot - Dashboard",
+            url: "/dashboard",
+            templateUrl: "views/rowlot/dashboard.html",
+            controller: "RowlotController"
+        })
             .state("auth.calendar", {
-                page_title: "Rowlot - Calendario",
-                url: "/calendar",
-                templateUrl: "views/rowlot/calendar.html",
-                controller: "RowlotController"
-            })
+            page_title: "Rowlot - Calendario",
+            url: "/calendar",
+            templateUrl: "views/rowlot/calendar.html",
+            controller: "RowlotController"
+        })
             .state("auth.rowlot-listtask", {
-                page_title: "Rowlot - Dashboard",
-                url: "/task",
-                templateUrl: "views/rowlot/listtask.html",
-                controller: "RowlotController"
-            })
-        
-        .state("auth.rowlot-profile", {
-                page_title: "Rowlot - Profile",
-                url: "/profile",
-                templateUrl: "views/rowlot/profile.html",
-                controller: "RowlotController"
-            })
+            page_title: "Rowlot - Dashboard",
+            url: "/task",
+            templateUrl: "views/rowlot/listtask.html",
+            controller: "RowlotController"
+        })
 
-            
+            .state("auth.rowlot-profile", {
+            page_title: "Rowlot - Profile",
+            url: "/profile",
+            templateUrl: "views/rowlot/profile.html",
+            controller: "RowlotController"
+        })
+
+            .state("auth.rowlot-biblioteca", {
+            page_title: "Rowlot - Library",
+            url: "/library",
+            templateUrl: "views/rowlot/biblioteca.html",
+            controller: "RowlotController"
+        })
+
+
 
     };
 } ());
@@ -148,10 +155,10 @@
 
 (function () {
     'use strict';
-    
-    
+
+
     angular.module('AdsbApp')
-           .run(runBlock);
+        .run(runBlock);
 
     runBlock.$inject = ['$log', '$stateParams', '$rootScope', '$cookieStore', '$location', '$state', 'CurrentUserService', "LoginRedirectService"];
 
@@ -167,7 +174,7 @@
             $("html, body").animate({ scrollTop: 0 }, 200);
         });
 
-       $rootScope.$on("$stateChangeStart", function (e, toState, toParams, fromState, fromParams) {
+        $rootScope.$on("$stateChangeStart", function (e, toState, toParams, fromState, fromParams) {
             // Se adiciona la lógica para comprobar que puedo mostrar si no estoy logueado
             var user = CurrentUserService.profile;
 
@@ -195,7 +202,7 @@
     "use strict";
 
     angular.module("AdsbApp")
-           .controller("LoginController", LoginController);
+        .controller("LoginController", LoginController);
 
     LoginController.$inject = ["$scope", "$rootScope",  "LoginService", "CurrentUserService", "LoginRedirectService", "toastr"];
 
@@ -208,21 +215,21 @@
 
         // Instancia del usuario actual
         $scope.user = CurrentUserService.profile;
-        
+
         // Inicio de sesión
         $scope.login = function (form) {
             if (form.$valid) {
                 LoginService.login($scope.credentials)
-                             .then(function (response) {
+                    .then(function (response) {
 
-                                 LoginRedirectService.redirectPostLogin();
-                                 
-                             }, function (error) {
+                    LoginRedirectService.redirectPostLogin();
 
-                                 toastr.error("No se pudo ejecutar la operación");
-                                 console.log(error);
+                }, function (error) {
 
-                             });
+                    toastr.error("No se pudo ejecutar la operación");
+                    console.log(error);
+
+                });
 
                 $scope.credentials.password = "";
                 form.$setUntouched();
@@ -230,17 +237,17 @@
         }
         //Registro
         $scope.signup = function(form){
-          if (form.$valid){
-            console.log($scope.credentials);
-            LoginService.signup($scope.credentials).then(function(response){
-                 LoginRedirectService.redirectPostLogin();
-            }, function(error){
-                toastr.error("No se pudo ejecutar la operación");
-                console.log(error);
-            });
-            $scope.credentials.password = "";
-            form.$setUntouched();
-          }
+            if (form.$valid){
+                console.log($scope.credentials);
+                LoginService.signup($scope.credentials).then(function(response){
+                    LoginRedirectService.redirectPostLogin();
+                }, function(error){
+                    toastr.error("No se pudo ejecutar la operación");
+                    console.log(error);
+                });
+                $scope.credentials.password = "";
+                form.$setUntouched();
+            }
         }
         // Cierre de sesión - Se eliminan datos del usuario y se redirecciona a la página de login
         $scope.logout = function () {            
@@ -248,10 +255,10 @@
                 LoginService.logout();
                 LoginRedirectService.redirectPostLogout();
             }, function(error) {
-              // An error happened.
+                // An error happened.
             });
         }
-      
+
         var init = function(){  
             // Row Toggler
             // -----------------------------------------------------------------
@@ -260,73 +267,73 @@
             // Accordion
             // -----------------------------------------------------------------
             $('#demo-foo-accordion').footable().on('footable_row_expanded', function(e) {
-              $('#demo-foo-accordion tbody tr.footable-detail-show').not(e.row).each(function() {
-                $('#demo-foo-accordion').data('footable').toggleDetail(this);
-              });
+                $('#demo-foo-accordion tbody tr.footable-detail-show').not(e.row).each(function() {
+                    $('#demo-foo-accordion').data('footable').toggleDetail(this);
+                });
             });
 
             // Pagination
             // -----------------------------------------------------------------
             $('#demo-foo-pagination').footable();
             $('#demo-show-entries').change(function (e) {
-              e.preventDefault();
-              var pageSize = $(this).val();
-              $('#demo-foo-pagination').data('page-size', pageSize);
-              $('#demo-foo-pagination').trigger('footable_initialized');
+                e.preventDefault();
+                var pageSize = $(this).val();
+                $('#demo-foo-pagination').data('page-size', pageSize);
+                $('#demo-foo-pagination').trigger('footable_initialized');
             });
 
             // Filtering
             // -----------------------------------------------------------------
             var filtering = $('#demo-foo-filtering');
             filtering.footable().on('footable_filtering', function (e) {
-              var selected = $('#demo-foo-filter-status').find(':selected').val();
-              e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
-              e.clear = !e.filter;
+                var selected = $('#demo-foo-filter-status').find(':selected').val();
+                e.filter += (e.filter && e.filter.length > 0) ? ' ' + selected : selected;
+                e.clear = !e.filter;
             });
 
             // Filter status
             $('#demo-foo-filter-status').change(function (e) {
-              e.preventDefault();
-              filtering.trigger('footable_filter', {filter: $(this).val()});
+                e.preventDefault();
+                filtering.trigger('footable_filter', {filter: $(this).val()});
             });
 
             // Search input
             $('#demo-foo-search').on('input', function (e) {
-              e.preventDefault();
-              filtering.trigger('footable_filter', {filter: $(this).val()});
+                e.preventDefault();
+                filtering.trigger('footable_filter', {filter: $(this).val()});
             });
 
 
             // Search input
             $('#demo-input-search2').on('input', function (e) {
-              e.preventDefault();
-              addrow.trigger('footable_filter', {filter: $(this).val()});
+                e.preventDefault();
+                addrow.trigger('footable_filter', {filter: $(this).val()});
             });
-            
+
             // Add & Remove Row
             var addrow = $('#demo-foo-addrow');
             addrow.footable().on('click', '.delete-row-btn', function() {
 
-              //get the footable object
-              var footable = addrow.data('footable');
+                //get the footable object
+                var footable = addrow.data('footable');
 
-              //get the row we are wanting to delete
-              var row = $(this).parents('tr:first');
+                //get the row we are wanting to delete
+                var row = $(this).parents('tr:first');
 
-              //delete the row
-              footable.removeRow(row);
+                //delete the row
+                footable.removeRow(row);
             });
             // Add Row Button
             $('#demo-btn-addrow').click(function() {
 
-              //get the footable object
-              var footable = addrow.data('footable');
-              
-              //build up the row we are wanting to add
-              var newRow = '<tr><td>thome</td><td>Woldt</td><td>Airline Transport Pilot</td><td>3 Oct 2016</td><td><span class="label label-table label-success">Active</span></td><td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
+                //get the footable object
+                var footable = addrow.data('footable');
 
-              //add it
-              footable.appendRow(newRow);
+                //build up the row we are wanting to add
+                var newRow = '<tr><td>thome</td><td>Woldt</td><td>Airline Transport Pilot</td><td>3 Oct 2016</td><td><span class="label label-table label-success">Active</span></td><td><button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button></td></tr>';
+
+                //add it
+                footable.appendRow(newRow);
             });
 
 
@@ -346,7 +353,7 @@
     'use strict';
 
     angular.module("AdsbApp")
-           .service("LoginService", LoginService);
+        .service("LoginService", LoginService);
 
     LoginService.$inject = ['RestService', 'CurrentUserService', '$q', "$firebaseAuth"];
 
@@ -367,7 +374,7 @@
                 const errorMessage = error.message;                
                 // ...
             });
-            
+
             // Add a realtime listener
             firebase.auth().onAuthStateChanged(function(user) {
                 if(user) {                    
@@ -383,20 +390,20 @@
         var signup = function(credentials){
             var defered = $q.defer();
             var promise = defered.promise;
-            
+
             const auth = firebase.auth();
 
-             auth.createUserWithEmailAndPassword(credentials.email,credentials.password).then(function(user){
-                    if(user){
-                      console.log('uid',user.uid);                  
-                      writeUserData(user.uid,credentials.email, credentials.password,'imagencita', credentials.name, credentials.lastName, credentials.type);                      
-                      defered.resolve();
-                    }else{
-                        console.error("Authentication failed:", error);
-                        defered.reject("Usuario no existe...") 
-                    }
-              });
-             return promise;
+            auth.createUserWithEmailAndPassword(credentials.email,credentials.password).then(function(user){
+                if(user){
+                    console.log('uid',user.uid);                  
+                    writeUserData(user.uid,credentials.email, credentials.password,'imagencita', credentials.name, credentials.lastName, credentials.type);                      
+                    defered.resolve();
+                }else{
+                    console.error("Authentication failed:", error);
+                    defered.reject("Usuario no existe...") 
+                }
+            });
+            return promise;
         }
         //Funcion donde agrego los datos del usuario creado
         //a la base de datos, con el UID <3
@@ -439,177 +446,182 @@
  */
 
 (function () {
-  "use strict";
+    "use strict";
 
-  angular.module("AdsbApp")
-    .controller("RowlotController", RowlotController);
+    angular.module("AdsbApp")
+        .controller("RowlotController", RowlotController);
 
-  RowlotController.$inject = ['$scope', '$timeout', 'RowlotService',"CurrentUserService","toastr"];
+    RowlotController.$inject = ['$scope', '$timeout', 'RowlotService',"CurrentUserService","toastr"];
 
-  function RowlotController($scope, $timeout,  RowlotService, CurrentUserService, toastr) {    
-    $scope.users = [];
-    $scope.profile = [];    
- $scope.actividades = []; 
+    function RowlotController($scope, $timeout,  RowlotService, CurrentUserService, toastr) { 
+        
+        $scope.users = [];
+        $scope.profile = [];    
+        $scope.unidades = []; 
+
+        var loadCurrentUser = function(){
+            return RowlotService.getCurrentUser().then(function(response){
+                //console.log("user",response)
+                $scope.profile = response;
+                console.log("TIPO", $scope.profile.Tipo);
+                var typeStudent = showStudent($scope.profile.Tipo);
+                $scope.showStudent = typeStudent;
+                var typeTeacher = showTeacher($scope.profile.Tipo);
+                $scope.showTeacher = typeTeacher;
+                //console.log("SHOW", type);
+            }, function (error) {
+                toastr.error("Error al cargar usuario");
+                console.log(error);
+            });
+        }
+
+        var loadUsers = function(){
+            return RowlotService.getUsers().then(function (response) {          
+                //    console.log("Users", response);
+                $scope.users = response;
+                console.log("ENTRO ACTIVIDAD",$scope.users);
+               // console.log("SCOPE USERS",$scope.users);
+            }, function (error) {
+                toastr.error("Error al cargar usuarios");
+                console.log(error);
+            });     
+        }
+
+
       
-    var loadCurrentUser = function(){
-      return RowlotService.getCurrentUser().then(function(response){
-        //console.log("user",response)
-        $scope.profile = response;
-        console.log("TIPO", $scope.profile.Tipo);
-        var typeStudent = showStudent($scope.profile.Tipo);
-        $scope.showStudent = typeStudent;
-        var typeTeacher = showTeacher($scope.profile.Tipo);
-        $scope.showTeacher = typeTeacher;
-        //console.log("SHOW", type);
-      }, function (error) {
-          toastr.error("Error al cargar usuario");
-          console.log(error);
-        });
-    }
-
-    var loadUsers = function(){
-      return RowlotService.getUsers().then(function (response) {          
-      //    console.log("Users", response);
-          $scope.users = response;
-        }, function (error) {
-          toastr.error("Error al cargar usuarios");
-          console.log(error);
-        });     
-    }
-
-    
-    
         var loadCurrentActivity = function(){
-      return RowlotService.getCurrentActivity().then(function(response){
-        //console.log("user",response)
-        $scope.tarea = response;
-        console.log("VISIBLE", $scope.tarea.Visible);
-        var visibleSi = showActivity($scope.tarea.Visible);
-        $scope.showActivity = visibleSi;
-        var visibleNo = NoShowActivity($scope.tarea.Visible);
-        $scope.NoShowActivity = visibleNo;
-        console.log("SHOW", visible);
-      }, function (error) {
-          toastr.error("Error al cargar usuario");
-          console.log(error);
-        });
-    }
-    
-      var loadActividades = function(){
-      return RowlotService.getActividades().then(function (response) {          
-          console.log("Actividades", response);
-          $scope.actividades = response;
-        }, function (error) {
-          toastr.error("Error al cargar las actividades");
-          console.log(error);
-   
-        });     
-    }
-    
-       $scope.addTitleActividad = function(tareaId, title){                
-      var val = angular.element('#'+tareaId).val();      
-      var newTitle = parseInt(coins)+parseInt(val);
-      RowlotService.updateTitleActividad(tareaId, newTitle);
-      angular.element('#'+tareaId).val();
-      $scope.actividades = [];
-      loadUsers();
-      loadCurrentUser();
-    }
-    
-    $scope.addCoins = function(userId, coins){                
-      var val = angular.element('#'+userId).val();      
-      var newCoins = parseInt(coins)+parseInt(val);
-      RowlotService.updateCoins(userId, newCoins);
-      angular.element('#'+userId).val();
-      $scope.users = [];
-      loadUsers();
-      loadCurrentUser();
-    }
+            return RowlotService.getCurrentActivity().then(function(response){
+               // console.log("aaaaaa",response)
+                $scope.tarea = response;
+                console.log("VISIBLE", $scope.tarea.Visible);
+                var visibleSi = showActivity($scope.tarea.Visible);
+                $scope.showActivity = visibleSi;
+                var visibleNo = NoShowActivity($scope.tarea.Visible);
+                $scope.NoShowActivity = visibleNo;
+                console.log("SHOW", visible);
+            }, function (error) {
+                toastr.error("Error al cargar usuario");
+                console.log(error);
+            });
+        }
 
-    $scope.substratCoins = function(userId, coins){            
-      var val = angular.element('#'+userId).val();      
-      var newCoins = parseInt(coins)-parseInt(val);
-      RowlotService.updateCoins(userId, newCoins);
-      angular.element('#'+userId).val();
-      $scope.users = [];
-      loadUsers();
-      loadCurrentUser();
-    }
+        var loadActividades = function(){
+            return RowlotService.getUnidades().then(function (response) {          
+               // console.log("Actividades", response);
+                $scope.unidades = response;
+               // console.log("ENTRO ACTIVIDAD",$scope.unidades);
+            }, function (error) {
+                toastr.error("Error al cargar las unidades");
+                console.log(error);
 
-    $scope.addMedalla = function(userId, metal){        
-      var val = angular.element('#metal-'+userId).val();      
-      var newMedalla = parseInt(metal)+parseInt(val);      
-      RowlotService.updateMedalla(userId, newMedalla);
-      angular.element('#'+userId).val();
-      $scope.users = [];
-      loadUsers();
-      loadCurrentUser();
-    }
+            });     
+        }
+  /*
+        $scope.addTitleActividad = function(tareaId, title){
+            console.log("Actividades");
+            var val = angular.element('#'+tareaId).val();      
+            var newTitle = parseInt(coins)+parseInt(val);
+            RowlotService.updateTitleActividad(tareaId, newTitle);
+            angular.element('#'+tareaId).val();
+            $scope.unidades = [];
+            loadUsers();
+            loadCurrentUser();
+        }
+        */
 
-    $scope.substratMedalla = function(userId, coins){            
-      var val = angular.element('#metal-'+userId).val();      
-      var newMedalla = parseInt(coins)-parseInt(val);
-      RowlotService.updateMedalla(userId, newMedalla);
-      angular.element('#'+userId).val();
-      $scope.users = [];
-      loadUsers();
-      loadCurrentUser();
-    }
+        $scope.addCoins = function(userId, coins){                
+            var val = angular.element('#'+userId).val();      
+            var newCoins = parseInt(coins)+parseInt(val);
+            RowlotService.updateCoins(userId, newCoins);
+            angular.element('#'+userId).val();
+            $scope.users = [];
+            loadUsers();
+            loadCurrentUser();
+        }
 
+        $scope.substratCoins = function(userId, coins){            
+            var val = angular.element('#'+userId).val();      
+            var newCoins = parseInt(coins)-parseInt(val);
+            RowlotService.updateCoins(userId, newCoins);
+            angular.element('#'+userId).val();
+            $scope.users = [];
+            loadUsers();
+            loadCurrentUser();
+        }
 
- $scope.addVida = function(userId, life){        
-      var val = angular.element('#life-'+userId).val();      
-      var newVida = parseInt(life)+parseInt(val);      
-      RowlotService.updateVida(userId, newVida);
-      angular.element('#'+userId).val();
-      $scope.users = [];
-      loadUsers();
-      loadCurrentUser();
-    }
+        $scope.addMedalla = function(userId, metal){        
+            var val = angular.element('#metal-'+userId).val();      
+            var newMedalla = parseInt(metal)+parseInt(val);      
+            RowlotService.updateMedalla(userId, newMedalla);
+            angular.element('#'+userId).val();
+            $scope.users = [];
+            loadUsers();
+            loadCurrentUser();
+        }
 
-    $scope.substratVida = function(userId, life){            
-      var val = angular.element('#life-'+userId).val();      
-      var newVida = parseInt(life)-parseInt(val);
-      RowlotService.updateVida(userId, newVida);
-      angular.element('#'+userId).val();
-      $scope.users = [];
-      loadUsers();
-      loadCurrentUser();
-    }
+        $scope.substratMedalla = function(userId, coins){            
+            var val = angular.element('#metal-'+userId).val();      
+            var newMedalla = parseInt(coins)-parseInt(val);
+            RowlotService.updateMedalla(userId, newMedalla);
+            angular.element('#'+userId).val();
+            $scope.users = [];
+            loadUsers();
+            loadCurrentUser();
+        }
 
 
+        $scope.addVida = function(userId, life){        
+            var val = angular.element('#life-'+userId).val();      
+            var newVida = parseInt(life)+parseInt(val);      
+            RowlotService.updateVida(userId, newVida);
+            angular.element('#'+userId).val();
+            $scope.users = [];
+            loadUsers();
+            loadCurrentUser();
+        }
 
-    var showActivity = function(visible){         
-        return visible=="si";
-    }
+        $scope.substratVida = function(userId, life){            
+            var val = angular.element('#life-'+userId).val();      
+            var newVida = parseInt(life)-parseInt(val);
+            RowlotService.updateVida(userId, newVida);
+            angular.element('#'+userId).val();
+            $scope.users = [];
+            loadUsers();
+            loadCurrentUser();
+        }
 
-    var NoShowActivity = function(visible){         
-        return visible=="no";
-    }
 
-       var showStudent = function(type){         
-        return type=="Estudiante";
-    }
 
-    var showTeacher = function(type){         
-        return type=="Profesor";
+        /* var showActivity = function(visible){         
+            return visible=="si";
+        }
+
+
+        var NoShowActivity = function(visible){         
+            return visible=="no";
+        }
+        */
+
+        var showStudent = function(type){         
+            return type=="Estudiante";
+        }
+
+        var showTeacher = function(type){         
+            return type=="Profesor";
+        }
+
+        var init = function(){
+            loadUsers();
+            loadCurrentUser();
+            loadCurrentActivity();
+            loadActividades();
+        }();
+
     }
-    
-    var init = function(){
-      loadUsers();
-      loadCurrentUser();
-      //  loadCurrentActivity();
-      // loadActividades();
-    }();
-   
-  }
 } ());
 
 /**
- * Servicio para el manejo de la lógica de negocio del módulo de aviones
- *
- * @author Nelson D. Padilla
- * @since 3-dic-2016
+ * 
  *
  */
 
@@ -630,14 +642,14 @@
             let user = firebase.auth().currentUser;            
             if(user != null){            
                 firebase.database().ref('/Usuarios/' + user.uid).once('value').then(function(snapshot) {
-                  //var username = snapshot.val().username;                  
-                  defered.resolve(snapshot.val());
-                  // ...
+                    //var username = snapshot.val().username;                  
+                    defered.resolve(snapshot.val());
+                    // ...
                 })            
             }
             return promise;
         }
-        
+
         var getUsers = function () {
             var defered = $q.defer();
             var promise = defered.promise;
@@ -646,7 +658,7 @@
             let database = firebase.database();
             //Mi nodo de Usuarios
             let ref = database.ref('Usuarios');
-                ref.on('value', function (ss) {
+            ref.on('value', function (ss) {
                 //let nombre = ss.val();
                 let nombres = ss.val();                
                 //tengo las keys de los usuarios en un array
@@ -660,93 +672,103 @@
 
             return promise;
         }
-        
-        
-        
-              var getCurrentActivity = function(){
+
+
+
+        var getCurrentActivity = function(){
+
             var defered = $q.defer();
             var promise = defered.promise;
             let activity = firebase.auth().currentActivity;            
             if(activity != null){            
-                firebase.database().ref('/Actividad/' + activity.uid).once('value').then(function(snapshot) {
-                  //var username = snapshot.val().username;                  
-                  defered.resolve(snapshot.val());
-                  // ...
+                firebase.database().ref('/Unidad/' + activity.uid).once('value').then(function(snapshot) {
+                    //var username = snapshot.val().username;                  
+                    defered.resolve(snapshot.val());
+                    // ...
                 })            
             }
             return promise;
         }
-        
-                 var getActividades = function () {
+
+        var getUnidades = function () {
+
             var defered = $q.defer();
             var promise = defered.promise;
-            let actividades = [];            
+            let unidades = [];            
             //acceso al servicio bd
             let database = firebase.database();
-         
-                 //Mi nodo de Actividades
-            let ref = database.ref('Actividad');
-                ref.on('value', function (ss) {
+
+            //Mi nodo de Actividades
+            let ref = database.ref('Unidad');
+            ref.on('value', function (ss) {
                 //let nombre = ss.val();
                 let tareas = ss.val();                
-                //tengo las keys de las tareas en un array
+                //tengo las keys de las ACTIVIDADES en un array
                 let keys = Object.keys(tareas);      
                 for (let i = 0; i < keys.length; i++){
                     let k = keys [i];                    
-                    actividades.push({"dataActividad": tareas[k], "uid": k});
+                    unidades.push({"data": tareas[k], "uid": k});
                 }                
-                defered.resolve(actividades);
+                defered.resolve(unidades);
             })
 
             return promise;
-        }
-                 
-                 
-                 
-                var updateTitleActividad = function(tareaId, title){
+        }        
+
+
+/*
+        var updateTitleActividad = function(tareaId, title){
+
             var tareaRef = firebase.database().ref('/Actividad/' + tareaId);
             tareaRef.update({
-              Titulo: title
+                Titulo: title
                 //log.console(title);
             });
         }         
-        
-        
+*/
+
 
         var updateCoins = function(userId, coins){
             var userRef = firebase.database().ref('/Usuarios/' + userId);
             userRef.update({
-              Moneda: coins
+                Moneda: coins
             });
         }
-        
 
-       var updateMedalla = function(userId, metal){
+
+        var updateMedalla = function(userId, metal){
             var userRef = firebase.database().ref('/Usuarios/' + userId);
             userRef.update({
-              Medalla: metal
+                Medalla: metal
             });
         } 
 
-           var updateVida = function(userId, life){
+        var updateVida = function(userId, life){
             var userRef = firebase.database().ref('/Usuarios/' + userId);
             userRef.update({
-              Vida: life
+                Vida: life
             });
         } 
-        
+
         return {
             getUsers: getUsers,
-           //getCurrentActivity:getCurrentActivity,
             getCurrentUser: getCurrentUser,
-            getActividades: getActividades,
+
+           getCurrentActivity:getCurrentActivity,
+            getUnidades: getUnidades,
+
+
             updateCoins:updateCoins,
             updateMedalla: updateMedalla,
             updateVida: updateVida,
-            updateTitleActividad: updateTitleActividad
+           // updateTitleActividad: updateTitleActividad
         }
     }
 } ());
+
+/*UNIDADES*/
+
+
 
 /**
  * Servicio para el manejo del token de seguridad en las peticiones http
@@ -760,7 +782,7 @@
     'use strict';
 
     angular.module("AdsbApp")
-           .service("AddTokenService", AddTokenService);
+        .service("AddTokenService", AddTokenService);
 
     AddTokenService.$inject = ['$q', 'CurrentUserService'];
 
@@ -792,7 +814,7 @@
     'use strict';
 
     angular.module("AdsbApp")
-           .factory("CurrentUserService", CurrentUserService);
+        .factory("CurrentUserService", CurrentUserService);
 
     CurrentUserService.$inject = ['LocalStorageService'];
 
@@ -858,7 +880,7 @@
     "use strict";
 
     angular.module("AdsbApp")
-           .service("LoginRedirectService", LoginRedirectService);
+        .service("LoginRedirectService", LoginRedirectService);
 
     LoginRedirectService.$inject = ["$q", "$injector", "$location"];
 
@@ -882,7 +904,7 @@
             $injector.get("$state").go(lastPath);
             lastPath = main;
         }
-        
+
         // Redirecciona a la página de login
         var redirectPostLogout = function () {
             $injector.get("$state").go("login"); 
@@ -912,7 +934,7 @@
     "use strict";
 
     angular.module("AdsbApp")
-           .controller("SideMenuController", SideMenuController);
+        .controller("SideMenuController", SideMenuController);
 
 
     SideMenuController.$inject = ["$rootScope", "$scope", "$state", "$stateParams", "$timeout"];
@@ -920,7 +942,7 @@
     function SideMenuController($rootScope, $scope, $state, $stateParams, $timeout) {
 
         $scope.sections = [
-             {
+            {
                 id: 0,
                 title: "Dashboard",
                 icon: "mdi mdi-table fa-fw",                
@@ -953,7 +975,7 @@
                 icon: "fa fa-paper-plane-o first_level_icon",
                 link: "auth.aircraft-nmacs"
             },
-           
+
         ];
 
         // accordion menu
@@ -1012,151 +1034,151 @@
     "use strict";
 
     angular
-      .module("AdsbApp")
+        .module("AdsbApp")
     /* Directives */
 
-        // change page title
+    // change page title
         .directive('updateTitle', [
-            '$rootScope',
-            function ($rootScope) {
-                return {
-                    link: function (scope, element) {
-                        var listener = function (event, toState, toParams, fromState, fromParams) {
-                            var title = 'Yukon Admin';
-                            if (toState.page_title) {
-                                title = toState.page_title;
-                            }
-                            if ($rootScope.appVer) {
-                                element.text(title + ' (' + $rootScope.appVer + ')');
-                            } else {
-                                element.text(title);
-                            }
-                        };
-                        $rootScope.$on('$stateChangeStart', listener);
-                    }
-                }
-            }
-        ])
-        // page preloader
-        .directive('pageLoader', [
-            '$timeout',
-            function ($timeout) {
-                return {
-                    restrict: 'AE',
-                    template: '<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>',
-                    link: function (scope, el, attrs) {
-                        el.addClass('pageLoader hide');
-                        scope.$on('$stateChangeStart', function (event) {
-                            el.toggleClass('hide animate');
-                        });
-                        scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {
-                            event.targetScope.$watch('$viewContentLoaded', function () {
-                                $timeout(function () {
-                                    el.toggleClass('hide animate')
-                                }, 600);
-                            })
-                        });
-                    }
-                };
-            }
-        ])
-        // show/hide side menu
-        .directive('menuToggle', [
-            '$rootScope',
-            '$cookieStore',
-            '$window',
-            '$timeout',
-            function ($rootScope, $cookieStore, $window, $timeout) {
-                return {
-                    restrict: 'E',
-                    template: '<span class="menu_toggle" ng-click="toggleSidebar()"><span class="icon_menu_toggle" ><i class="arrow_carrot-2left" ng-class="sideNavCollapsed ? \'hide\' : \'\'"></i><i class="arrow_carrot-2right" ng-class="sideNavCollapsed ? \'\' : \'hide\'"></i></span></span>',
-                    link: function (scope, el, attrs) {
-                        var mobileView = 992;
-                        $rootScope.getWidth = function () {
-                            return window.innerWidth;
-                        };
-                        $rootScope.$watch($rootScope.getWidth, function (newValue, oldValue) {
-                            if (newValue >= mobileView) {
-                                if (angular.isDefined($cookieStore.get('sideNavCollapsed'))) {
-                                    if ($cookieStore.get('sideNavCollapsed') == false) {
-                                        $rootScope.sideNavCollapsed = false;
-                                    } else {
-                                        $rootScope.sideNavCollapsed = true;
-                                    }
-                                } else {
-                                    $rootScope.sideNavCollapsed = false;
-                                }
-                            } else {
-                                $rootScope.sideNavCollapsed = true;
-                            }
-                            $timeout(function () {
-                                $(window).resize();
-                            });
-                        });
-                        scope.toggleSidebar = function () {
-                            $rootScope.sideNavCollapsed = !$rootScope.sideNavCollapsed;
-                            $cookieStore.put('sideNavCollapsed', $rootScope.sideNavCollapsed);
-                            if (!$rootScope.fixedLayout) {
-                                if (window.innerWidth > 991) {
-                                    $timeout(function () {
-                                        $(window).resize();
-                                    });
-                                }
-                            }
-                            if (!$rootScope.sideNavCollapsed && !$rootScope.topMenuAct) {
-                                $rootScope.createScrollbar();
-                            } else {
-                                $rootScope.destroyScrollbar();
-                            }
-                        };
-                    }
-                };
-            }
-        ])
-        // update datatables fixedHeader position
-        .directive('updateFixedHeaders', function ($window) {
-            return function (scope, element) {
-                var w = angular.element($window);
-                scope.getElDimensions = function () {
-                    return {
-                        'w': element.width(),
-                        'h': element.height()
-                    };
-                };
-                scope.$watch(scope.getElDimensions, function (newValue, oldValue) {
-                    if (typeof oFH != 'undefined') {
-                        oFH._fnUpdateClones(true);
-                        oFH._fnUpdatePositions();
-                    }
-                }, true);
-                w.bind('resize', function () {
-                    scope.$apply();
-                });
-            };
-        })
-        // ng-repeat after render callback
-        .directive('onLastRepeat', function ($timeout) {
-            return function (scope, element, attrs) {
-                if (scope.$last) {
-                    $timeout(function () {
-                        scope.$emit('onRepeatLast', element, attrs);
-                    })
-                }
-            };
-        })
-        // add width/height properities to Image
-        .directive('addImageProp', function () {
+        '$rootScope',
+        function ($rootScope) {
             return {
-                restrict: 'A',
-                link: function (scope, elem, attr) {
-                    elem.on('load', function () {
-                        var w = !scope.isHighDensity() ? $(this).width() : $(this).width() / 2,
-                            h = !scope.isHighDensity() ? $(this).height() : $(this).height() / 2;
-                        $(this).attr('width', w).attr('height', h);
+                link: function (scope, element) {
+                    var listener = function (event, toState, toParams, fromState, fromParams) {
+                        var title = 'Yukon Admin';
+                        if (toState.page_title) {
+                            title = toState.page_title;
+                        }
+                        if ($rootScope.appVer) {
+                            element.text(title + ' (' + $rootScope.appVer + ')');
+                        } else {
+                            element.text(title);
+                        }
+                    };
+                    $rootScope.$on('$stateChangeStart', listener);
+                }
+            }
+        }
+    ])
+    // page preloader
+        .directive('pageLoader', [
+        '$timeout',
+        function ($timeout) {
+            return {
+                restrict: 'AE',
+                template: '<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>',
+                link: function (scope, el, attrs) {
+                    el.addClass('pageLoader hide');
+                    scope.$on('$stateChangeStart', function (event) {
+                        el.toggleClass('hide animate');
+                    });
+                    scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState) {
+                        event.targetScope.$watch('$viewContentLoaded', function () {
+                            $timeout(function () {
+                                el.toggleClass('hide animate')
+                            }, 600);
+                        })
                     });
                 }
             };
-        })
+        }
+    ])
+    // show/hide side menu
+        .directive('menuToggle', [
+        '$rootScope',
+        '$cookieStore',
+        '$window',
+        '$timeout',
+        function ($rootScope, $cookieStore, $window, $timeout) {
+            return {
+                restrict: 'E',
+                template: '<span class="menu_toggle" ng-click="toggleSidebar()"><span class="icon_menu_toggle" ><i class="arrow_carrot-2left" ng-class="sideNavCollapsed ? \'hide\' : \'\'"></i><i class="arrow_carrot-2right" ng-class="sideNavCollapsed ? \'\' : \'hide\'"></i></span></span>',
+                link: function (scope, el, attrs) {
+                    var mobileView = 992;
+                    $rootScope.getWidth = function () {
+                        return window.innerWidth;
+                    };
+                    $rootScope.$watch($rootScope.getWidth, function (newValue, oldValue) {
+                        if (newValue >= mobileView) {
+                            if (angular.isDefined($cookieStore.get('sideNavCollapsed'))) {
+                                if ($cookieStore.get('sideNavCollapsed') == false) {
+                                    $rootScope.sideNavCollapsed = false;
+                                } else {
+                                    $rootScope.sideNavCollapsed = true;
+                                }
+                            } else {
+                                $rootScope.sideNavCollapsed = false;
+                            }
+                        } else {
+                            $rootScope.sideNavCollapsed = true;
+                        }
+                        $timeout(function () {
+                            $(window).resize();
+                        });
+                    });
+                    scope.toggleSidebar = function () {
+                        $rootScope.sideNavCollapsed = !$rootScope.sideNavCollapsed;
+                        $cookieStore.put('sideNavCollapsed', $rootScope.sideNavCollapsed);
+                        if (!$rootScope.fixedLayout) {
+                            if (window.innerWidth > 991) {
+                                $timeout(function () {
+                                    $(window).resize();
+                                });
+                            }
+                        }
+                        if (!$rootScope.sideNavCollapsed && !$rootScope.topMenuAct) {
+                            $rootScope.createScrollbar();
+                        } else {
+                            $rootScope.destroyScrollbar();
+                        }
+                    };
+                }
+            };
+        }
+    ])
+    // update datatables fixedHeader position
+        .directive('updateFixedHeaders', function ($window) {
+        return function (scope, element) {
+            var w = angular.element($window);
+            scope.getElDimensions = function () {
+                return {
+                    'w': element.width(),
+                    'h': element.height()
+                };
+            };
+            scope.$watch(scope.getElDimensions, function (newValue, oldValue) {
+                if (typeof oFH != 'undefined') {
+                    oFH._fnUpdateClones(true);
+                    oFH._fnUpdatePositions();
+                }
+            }, true);
+            w.bind('resize', function () {
+                scope.$apply();
+            });
+        };
+    })
+    // ng-repeat after render callback
+        .directive('onLastRepeat', function ($timeout) {
+        return function (scope, element, attrs) {
+            if (scope.$last) {
+                $timeout(function () {
+                    scope.$emit('onRepeatLast', element, attrs);
+                })
+            }
+        };
+    })
+    // add width/height properities to Image
+        .directive('addImageProp', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, elem, attr) {
+                elem.on('load', function () {
+                    var w = !scope.isHighDensity() ? $(this).width() : $(this).width() / 2,
+                        h = !scope.isHighDensity() ? $(this).height() : $(this).height() / 2;
+                    $(this).attr('width', w).attr('height', h);
+                });
+            }
+        };
+    })
 
 
 })();
@@ -1172,23 +1194,23 @@
     'use strict';
 
     angular.module('AdsbApp')
-           .service('DialogService', DialogService);
+        .service('DialogService', DialogService);
 
     DialogService.$inject = ['$mdDialog', '$http'];
 
-    
+
     function DialogService($mdDialog, $http) {
 
         // Despliega un confirm popup
         var confirm = function (titulo, mensaje) {
 
             var confirm = $mdDialog.confirm()
-                                   .title(titulo)
-                                   .content(mensaje)
-                                   .ariaLabel('Confirmación de usuario')
-                                   .ok('Si')
-                                   .cancel('No')
-                                   .hasBackdrop(true);
+            .title(titulo)
+            .content(mensaje)
+            .ariaLabel('Confirmación de usuario')
+            .ok('Si')
+            .cancel('No')
+            .hasBackdrop(true);
 
             return $mdDialog.show(confirm);
 
@@ -1197,11 +1219,11 @@
         // Despliega un alert popup
         var alert = function (mensaje) {
             $mdDialog.show($mdDialog.alert()
-                               .title('')
-                               .content(mensaje)
-                               .ok('Aceptar')
-                               .hasBackdrop(true)
-                    );
+                           .title('')
+                           .content(mensaje)
+                           .ok('Aceptar')
+                           .hasBackdrop(true)
+                          );
         }
 
         return {
@@ -1343,9 +1365,9 @@
         var fitMap = function (map, polylines) {
             var bounds = new google.maps.LatLngBounds();
             var firtsStep = new google.maps.LatLng(findFirstPoint(polylines).latitude,
-                findFirstPoint(polylines).longitude);
+                                                   findFirstPoint(polylines).longitude);
             var lastStep = new google.maps.LatLng(findLastPoint(polylines).latitude,
-                findLastPoint(polylines).longitude);
+                                                  findLastPoint(polylines).longitude);
 
             bounds.extend(firtsStep);
             bounds.extend(lastStep);
@@ -1397,7 +1419,7 @@
     "use strict";
 
     angular.module("AdsbApp")
-           .service("LocalStorageService", LocalStorageService);
+        .service("LocalStorageService", LocalStorageService);
 
     LocalStorageService.$inject = ["$window"];
 
@@ -1484,3 +1506,24 @@
         }
     }
 })();
+
+
+
+(function () {
+    'use strict';
+    angular
+        .module('AdsbApp')
+    // .service('RestService', RestService);
+
+        .controller('AppCtrl', function($scope) {
+        $scope.users = ['Fabio', 'Leonardo', 'Thomas', 'Gabriele', 'Fabrizio', 'John', 'Luis', 'Kate', 'Max'];
+    });
+
+
+})();
+
+
+
+
+
+
